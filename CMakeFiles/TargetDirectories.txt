@@ -1,4 +1,0 @@
-/Users/danielmulvad/school/CS-1C/CS1C-Project-2/CMakeFiles/rebuild_cache.dir
-/Users/danielmulvad/school/CS-1C/CS1C-Project-2/CMakeFiles/edit_cache.dir
-/Users/danielmulvad/school/CS-1C/CS1C-Project-2/CMakeFiles/CostcoPlus.dir
-/Users/danielmulvad/school/CS-1C/CS1C-Project-2/CMakeFiles/CostcoPlus_autogen.dir

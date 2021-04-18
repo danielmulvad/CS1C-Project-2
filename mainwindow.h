@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QString>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -16,7 +17,12 @@ public:
   MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
 
+public slots:
+  void handle_login();
+
 private:
   Ui::MainWindow *ui;
+  QString usernameKey = "Costco+";
+  QString passwordKey = "123456";
 };
 #endif // MAINWINDOW_H

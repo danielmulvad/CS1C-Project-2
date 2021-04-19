@@ -1,16 +1,16 @@
 #ifndef DATABASE_H
 #define DATABASE_H
+#include <QDebug>
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QString>
-#include <QDebug>
 
-class DbManager
-{
+class DbManager {
 public:
-    DbManager(const QString& path);
+  DbManager(const QString &path);
+
 private:
-    QSqlDatabase m_db;
+  QSqlDatabase m_db;
 };
 
 #endif // DATABASE_H

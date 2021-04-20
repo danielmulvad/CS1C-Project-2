@@ -3,23 +3,31 @@
 DbManager::DbManager(const QString &path) {
   m_db = QSqlDatabase::addDatabase("QSQLITE");
   m_db.setDatabaseName(path);
-  if (!m_db.open()) {
-    qDebug() << "Error: connection with database failed";
-    return;
-  }
-  qDebug() << "Database: connection ok";
-  QSqlQuery query;
-  auto ok =
-      query.exec("CREATE TABLE test(id INTEGER PRIMARY KEY) IF NOT EXISTS");
-  if (ok) {
-    qDebug() << "Exec worked";
+  if (m_db.open()) {
+    // success!
+    qDebug() << "Database: connection ok";
+    qDebug() << "Database path: " << path;
+    QSqlQuery query;
+    query.prepare(
+        "CREATE TABLE IF NOT EXISTS purchases (purchaseDate DATE NOT NULL, "
+        "customerId INT, productDescription STRING, productPrice DOUBLE, "
+        "productQuantity INT)");
+    query.exec();
+    this->listTables();
   } else {
-    qDebug() << "Exec did not work";
-  }
-  ok = query.exec("INSERT INTO test (id) VALUES (1000)");
-  if (ok) {
-    qDebug() << "Exec worked";
-  } else {
-    qDebug() << "Exec did not work";
+    qDebug() << "Could not open SQLite3 connection";
   }
 };
+
+DbManager::~DbManager() {
+  if (m_db.isOpen()) m_db.close();
+};
+
+void DbManager::listTables() {
+  const QStringList tables = m_db.tables();
+  auto it = tables.begin();
+  while (it != tables.end()) {
+    qDebug() << *it;
+    ++it;
+  }
+}

@@ -7,13 +7,13 @@
 #include <QString>
 
 class DbManager {
- public:
-  DbManager(const QString&);
+public:
+  DbManager(const QString &);
   ~DbManager();
   void listTables();
 
- private:
+private:
   QSqlDatabase m_db;
 };
 
-#endif  // DATABASE_H
+#endif // DATABASE_H

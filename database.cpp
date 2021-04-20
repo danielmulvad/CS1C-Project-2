@@ -20,7 +20,8 @@ DbManager::DbManager(const QString &path) {
 };
 
 DbManager::~DbManager() {
-  if (m_db.isOpen()) m_db.close();
+  if (m_db.isOpen())
+    m_db.close();
 };
 
 void DbManager::listTables() {

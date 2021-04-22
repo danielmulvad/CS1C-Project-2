@@ -25,6 +25,6 @@ void MainWindow::handle_login() {
 }
 
 void MainWindow::clear() {
-    this->ui->username->setText("");
-    this->ui->password->setText("");
+  this->ui->username->setText("");
+  this->ui->password->setText("");
 }

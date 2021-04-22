@@ -151,8 +151,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>clear</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>176</x>
+     <y>202</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>188</x>
+     <y>373</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>handle_login()</slot>
+  <slot>clear()</slot>
  </slots>
 </ui>

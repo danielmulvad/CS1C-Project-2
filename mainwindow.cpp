@@ -13,11 +13,18 @@ void MainWindow::handle_login() {
 
   if (this->ui->username->text() == usernameKey &&
       this->ui->password->text() == passwordKey) {
-    this->ui->error->setText("Correct login information!!!");
+    this->clear();
+    this->ui->error->setText("");
     CostcoPage page;
     page.setModal(true);
     page.exec();
   } else {
     this->ui->error->setText("Incorrect login information!!!");
+    this->clear();
   }
+}
+
+void MainWindow::clear() {
+    this->ui->username->setText("");
+    this->ui->password->setText("");
 }

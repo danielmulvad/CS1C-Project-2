@@ -2,18 +2,10 @@
 #include "database.h"
 #include <QSpinBox>
 
-AddMember::AddMember(QWidget *parent) :
-    QDialog(parent), ui(new Ui::AddMember)
-{
-    ui ->setupUi(this);
+AddMember::AddMember(QWidget *parent) : QDialog(parent), ui(new Ui::AddMember) {
+  ui->setupUi(this);
 }
 
-AddMember::~AddMember()
-{
-    delete ui;
-}
+AddMember::~AddMember() { delete ui; }
 
-void AddMember::on_addFromFileButton_clicked()
-{
-
-}
+void AddMember::on_addFromFileButton_clicked() {}

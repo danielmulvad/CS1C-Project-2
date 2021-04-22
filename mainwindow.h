@@ -19,6 +19,7 @@ public:
 
 public slots:
   void handle_login();
+  void clear();
 
 private:
   Ui::MainWindow *ui;

@@ -33,9 +33,9 @@ void DbManager::listTables() {
   }
 }
 
-void DbManager::importPurchasesFromFileSelection(QWidget * widget) {
-  const auto fileName = QFileDialog::getOpenFileName(
-      widget, "Open Image", "", "Image Files (*.xlsx)");
+void DbManager::importPurchasesFromFileSelection(QWidget *widget) {
+  const auto fileName = QFileDialog::getOpenFileName(widget, "Open Image", "",
+                                                     "Image Files (*.xlsx)");
   qDebug() << fileName;
   return;
 }

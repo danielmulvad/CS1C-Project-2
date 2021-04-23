@@ -2,6 +2,7 @@
 #define COSTCOPAGE_H
 
 #include <QDialog>
+#include <database.h>
 
 namespace Ui {
 class CostcoPage;
@@ -11,11 +12,15 @@ class CostcoPage : public QDialog {
   Q_OBJECT
 
 public:
-  explicit CostcoPage(QWidget *parent = nullptr);
+  CostcoPage(DbManager *db, QWidget *parent = nullptr);
   ~CostcoPage();
+
+private slots:
+  void on_button_importPurchasesFromFileSelection_clicked();
 
 private:
   Ui::CostcoPage *ui;
+  DbManager *database;
 };
 
 #endif // COSTCOPAGE_H

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QString>
+#include "database.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -15,6 +16,7 @@ class MainWindow : public QMainWindow {
 
 public:
   MainWindow(QWidget *parent = nullptr);
+  MainWindow(DbManager *, QWidget *parent = nullptr);
   ~MainWindow();
 
 public slots:
@@ -23,6 +25,7 @@ public slots:
 
 private:
   Ui::MainWindow *ui;
+  DbManager *database;
   QString usernameKey = "Costco+";
   QString passwordKey = "123456";
 };

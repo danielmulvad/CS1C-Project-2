@@ -7,6 +7,12 @@ MainWindow::MainWindow(QWidget *parent)
   ui->setupUi(this);
 }
 
+MainWindow::MainWindow(DbManager *db, QWidget *parent)
+     : QMainWindow(parent), ui(new Ui::MainWindow) {
+  this->database = db;
+  ui->setupUi(this);
+}
+
 MainWindow::~MainWindow() { delete ui; }
 
 void MainWindow::handle_login() {
@@ -15,7 +21,7 @@ void MainWindow::handle_login() {
       this->ui->password->text() == passwordKey) {
     this->clear();
     this->ui->error->setText("");
-    CostcoPage page;
+    CostcoPage page{this->database};
     page.setModal(true);
     page.exec();
   } else {

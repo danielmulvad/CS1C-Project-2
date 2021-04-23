@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 MainWindow::MainWindow(DbManager *db, QWidget *parent)
-     : QMainWindow(parent), ui(new Ui::MainWindow) {
+    : QMainWindow(parent), ui(new Ui::MainWindow) {
   this->database = db;
   ui->setupUi(this);
 }

@@ -1,9 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "database.h"
 #include <QMainWindow>
 #include <QString>
-#include "database.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

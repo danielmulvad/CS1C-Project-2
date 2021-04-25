@@ -7,12 +7,24 @@ DbManager::DbManager(const QString &path) {
     // success!
     qDebug() << "Database: connection ok";
     qDebug() << "Database path: " << path;
-    QSqlQuery query;
-    query.prepare(
+    QSqlQuery createMembershipsTable;
+    createMembershipsTable.prepare(
+        "CREATE TABLE memberships (type STRING PRIMARY KEY UNIQUE NOT NULL, "
+        "rebate DOUBLE NOT NULL);");
+    createMembershipsTable.exec();
+    QSqlQuery createMembersTable;
+    createMembersTable.prepare(
+        "CREATE TABLE IF NOT EXISTS members (name STRING NOT NULL, number INT "
+        "PRIMARY KEY UNIQUE NOT NULL, type STRING NOT NULL REFERENCES "
+        "memberships (type), expirationDate DATE NOT NULL)");
+    createMembersTable.exec();
+    QSqlQuery createPurchasesTable;
+    createPurchasesTable.prepare(
         "CREATE TABLE IF NOT EXISTS purchases (purchaseDate DATE NOT NULL, "
-        "customerId INT, productDescription STRING, productPrice DOUBLE, "
+        "customerId INT REFERENCES members (number), productDescription "
+        "STRING, productPrice DOUBLE, "
         "productQuantity INT)");
-    query.exec();
+    createPurchasesTable.exec();
     this->listTables();
   } else {
     qDebug() << "Could not open SQLite3 connection";
@@ -20,8 +32,7 @@ DbManager::DbManager(const QString &path) {
 };
 
 DbManager::~DbManager() {
-  if (m_db.isOpen())
-    m_db.close();
+  if (m_db.isOpen()) m_db.close();
 };
 
 void DbManager::listTables() {

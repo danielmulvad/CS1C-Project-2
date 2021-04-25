@@ -1,4 +1,5 @@
 #include "costcopage.h"
+
 #include "ui_costcopage.h"
 
 CostcoPage::CostcoPage(DbManager *db, QWidget *parent)

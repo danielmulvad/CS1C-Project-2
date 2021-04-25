@@ -7,24 +7,29 @@ DbManager::DbManager(const QString &path) {
     // success!
     qDebug() << "Database: connection ok";
     qDebug() << "Database path: " << path;
+    QSqlDatabase::database().transaction();
     QSqlQuery createMembershipsTable;
-    createMembershipsTable.prepare(
-        "CREATE TABLE memberships (type STRING PRIMARY KEY UNIQUE NOT NULL, "
-        "rebate DOUBLE NOT NULL);");
-    createMembershipsTable.exec();
+    createMembershipsTable.exec(
+        "CREATE TABLE IF NOT EXISTS memberships (type STRING PRIMARY KEY UNIQUE NOT NULL, "
+        "rebate DOUBLE NOT NULL, dues DOUBLE NOT NULL);");
+    createMembershipsTable.exec(
+          "INSERT INTO memberships (type, rebate, dues) VALUES ('Regular', 2.00, 65.00)"
+    );
+    createMembershipsTable.exec(
+          "INSERT INTO memberships (type, rebate, dues) VALUES ('Executive', 0.00, 120.00)"
+    );
     QSqlQuery createMembersTable;
-    createMembersTable.prepare(
+    createMembersTable.exec(
         "CREATE TABLE IF NOT EXISTS members (name STRING NOT NULL, number INT "
         "PRIMARY KEY UNIQUE NOT NULL, type STRING NOT NULL REFERENCES "
         "memberships (type), expirationDate DATE NOT NULL)");
-    createMembersTable.exec();
     QSqlQuery createPurchasesTable;
-    createPurchasesTable.prepare(
+    createPurchasesTable.exec(
         "CREATE TABLE IF NOT EXISTS purchases (purchaseDate DATE NOT NULL, "
         "customerId INT REFERENCES members (number), productDescription "
         "STRING, productPrice DOUBLE, "
         "productQuantity INT)");
-    createPurchasesTable.exec();
+    QSqlDatabase::database().commit();
     this->listTables();
   } else {
     qDebug() << "Could not open SQLite3 connection";

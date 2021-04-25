@@ -24,6 +24,7 @@ void MainWindow::handle_login() {
     CostcoPage page{this->database};
     page.setModal(true);
     page.exec();
+    this->close();
   } else {
     this->ui->error->setText("Incorrect login information!!!");
     this->clear();

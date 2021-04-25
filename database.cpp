@@ -10,14 +10,13 @@ DbManager::DbManager(const QString &path) {
     QSqlDatabase::database().transaction();
     QSqlQuery createMembershipsTable;
     createMembershipsTable.exec(
-        "CREATE TABLE IF NOT EXISTS memberships (type STRING PRIMARY KEY UNIQUE NOT NULL, "
+        "CREATE TABLE IF NOT EXISTS memberships (type STRING PRIMARY KEY "
+        "UNIQUE NOT NULL, "
         "rebate DOUBLE NOT NULL, dues DOUBLE NOT NULL);");
-    createMembershipsTable.exec(
-          "INSERT INTO memberships (type, rebate, dues) VALUES ('Regular', 2.00, 65.00)"
-    );
-    createMembershipsTable.exec(
-          "INSERT INTO memberships (type, rebate, dues) VALUES ('Executive', 0.00, 120.00)"
-    );
+    createMembershipsTable.exec("INSERT INTO memberships (type, rebate, dues) "
+                                "VALUES ('Regular', 2.00, 65.00)");
+    createMembershipsTable.exec("INSERT INTO memberships (type, rebate, dues) "
+                                "VALUES ('Executive', 0.00, 120.00)");
     QSqlQuery createMembersTable;
     createMembersTable.exec(
         "CREATE TABLE IF NOT EXISTS members (name STRING NOT NULL, number INT "

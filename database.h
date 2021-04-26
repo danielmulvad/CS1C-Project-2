@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QDir>
 #include <QFileDialog>
+#include <QRegularExpression>
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QString>
@@ -12,6 +13,7 @@ public:
   DbManager(const QString &);
   ~DbManager();
   void listTables();
+  void importMembersFromFileSelection(QWidget *widget);
   void importPurchasesFromFileSelection(QWidget *widget);
 
 private:

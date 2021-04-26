@@ -18,6 +18,8 @@ public:
 private slots:
   void on_button_importPurchasesFromFileSelection_clicked();
 
+  void on_button_importMembersFromFileSelection_clicked();
+
 private:
   Ui::CostcoPage *ui;
   DbManager *database;

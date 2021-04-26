@@ -9,127 +9,124 @@ DbManager::DbManager(const QString &path) {
   m_db = QSqlDatabase::addDatabase("QSQLITE");
   m_db.setDatabaseName(path);
   if (m_db.open()) {
-      // success!
-      qDebug() << "Database: connection ok";
-      qDebug() << "Database path: " << path;
-      QSqlDatabase::database().transaction();
-      QSqlQuery createMembershipsTable;
-      createMembershipsTable.exec(
-            "CREATE TABLE IF NOT EXISTS memberships (type STRING PRIMARY KEY UNIQUE NOT NULL, "
+    // success!
+    qDebug() << "Database: connection ok";
+    qDebug() << "Database path: " << path;
+    QSqlDatabase::database().transaction();
+    QSqlQuery createMembershipsTable;
+    createMembershipsTable.exec(
+        "CREATE TABLE IF NOT EXISTS memberships (type STRING PRIMARY KEY "
+        "UNIQUE NOT NULL, "
         "rebate DOUBLE NOT NULL, dues DOUBLE NOT NULL);");
-      createMembershipsTable.exec(
-            "INSERT INTO memberships (type, rebate, dues) VALUES ('Regular', 2.00, 65.00)"
-    );
-      createMembershipsTable.exec(
-            "INSERT INTO memberships (type, rebate, dues) VALUES ('Executive', 0.00, 120.00)"
-    );
-      QSqlQuery createMembersTable;
-      createMembersTable.exec(
-            "CREATE TABLE IF NOT EXISTS members (name STRING NOT NULL, number INT "
+    createMembershipsTable.exec(
+        "INSERT INTO memberships (type, rebate, dues) VALUES ('Regular', 2.00, "
+        "65.00)");
+    createMembershipsTable.exec(
+        "INSERT INTO memberships (type, rebate, dues) VALUES ('Executive', "
+        "0.00, 120.00)");
+    QSqlQuery createMembersTable;
+    createMembersTable.exec(
+        "CREATE TABLE IF NOT EXISTS members (name STRING NOT NULL, number INT "
         "PRIMARY KEY UNIQUE NOT NULL, type STRING NOT NULL REFERENCES "
         "memberships (type), expirationDate DATE NOT NULL)");
-      QSqlQuery createPurchasesTable;
-      createPurchasesTable.exec(
-            "CREATE TABLE IF NOT EXISTS purchases (purchaseDate DATE NOT NULL, "
+    QSqlQuery createPurchasesTable;
+    createPurchasesTable.exec(
+        "CREATE TABLE IF NOT EXISTS purchases (purchaseDate DATE NOT NULL, "
         "customerId INT REFERENCES members (number), productDescription "
         "STRING, productPrice DOUBLE, "
         "productQuantity INT)");
-      QSqlDatabase::database().commit();
-      this->listTables();
-    } else {
-      qDebug() << "Could not open SQLite3 connection";
-    }
+    QSqlDatabase::database().commit();
+    this->listTables();
+  } else {
+    qDebug() << "Could not open SQLite3 connection";
+  }
 };
 
 DbManager::~DbManager() {
-  if (m_db.isOpen())
-    m_db.close();
+  if (m_db.isOpen()) m_db.close();
 };
 
 void DbManager::listTables() {
   const QStringList tables = m_db.tables();
   auto it = tables.begin();
   while (it != tables.end()) {
-      qDebug() << *it;
-      ++it;
-    }
+    qDebug() << *it;
+    ++it;
+  }
 }
 void DbManager::importMembersFromFileSelection(QWidget *widget) {
-  const auto fileName = QFileDialog::getOpenFileName(widget, "Open Purchases File", "",
-                                                     "Text Files (*.txt)");
+  const auto fileName = QFileDialog::getOpenFileName(
+      widget, "Open Purchases File", "", "Text Files (*.txt)");
   qDebug() << fileName;
   QFile inputFile(fileName);
-  if (inputFile.open(QIODevice::ReadOnly))
-    {
-      QTextStream in(&inputFile);
-      while (!in.atEnd())
-        {
-          QString customerName, customerMembershipType, customerMembershipExpiration;
-          int customerMemberNumber;
-          for (int column = 0; column < 4; column++) {
-              QString line = cleanInputText(in.readLine());
-              switch (column) {
-                case 0:
-                  customerName = line;
-                  break;
-                case 1:
-                  customerMemberNumber = line.toInt();
-                  break;
-                case 2:
-                  customerMembershipType = line;
-                  break;
-                case 3:
-                  customerMembershipExpiration = line;
-                  break;
-                default:
-                  break;
-                }
-            }
-          qDebug() << customerName << customerMemberNumber << customerMembershipType<< customerMembershipExpiration;
+  if (inputFile.open(QIODevice::ReadOnly)) {
+    QTextStream in(&inputFile);
+    while (!in.atEnd()) {
+      QString customerName, customerMembershipType,
+          customerMembershipExpiration;
+      int customerMemberNumber;
+      for (int column = 0; column < 4; column++) {
+        QString line = cleanInputText(in.readLine());
+        switch (column) {
+          case 0:
+            customerName = line;
+            break;
+          case 1:
+            customerMemberNumber = line.toInt();
+            break;
+          case 2:
+            customerMembershipType = line;
+            break;
+          case 3:
+            customerMembershipExpiration = line;
+            break;
+          default:
+            break;
         }
-      inputFile.close();
+      }
+      qDebug() << customerName << customerMemberNumber << customerMembershipType
+               << customerMembershipExpiration;
     }
+    inputFile.close();
+  }
   return;
 }
 void DbManager::importPurchasesFromFileSelection(QWidget *widget) {
-  const auto fileName = QFileDialog::getOpenFileName(widget, "Open Purchases File", "",
-                                                     "Text Files (*.txt)");
+  const auto fileName = QFileDialog::getOpenFileName(
+      widget, "Open Purchases File", "", "Text Files (*.txt)");
   qDebug() << fileName;
   QFile inputFile(fileName);
-  if (inputFile.open(QIODevice::ReadOnly))
-    {
-      QTextStream in(&inputFile);
-      while (!in.atEnd())
-        {
-          QString date, itemPurchased;
-          int customerId;
-          double price, quantity;
-          for (int column = 0; column < 5; column++) {
-              QString line = cleanInputText(in.readLine());
-              switch (column) {
-                case 0:
-                  date = line;
-                  break;
-                case 1:
-                  customerId = line.toInt();
-                  break;
-                case 2:
-                  itemPurchased = line;
-                  break;
-                case 3:
-                  price = line.toDouble();
-                  break;
-                case 4:
-                  quantity = line.toDouble();
-                  break;
-                default:
-                  break;
-                }
-            }
-          qDebug() << date << customerId << itemPurchased << price << quantity;
+  if (inputFile.open(QIODevice::ReadOnly)) {
+    QTextStream in(&inputFile);
+    while (!in.atEnd()) {
+      QString date, itemPurchased;
+      int customerId;
+      double price, quantity;
+      for (int column = 0; column < 5; column++) {
+        QString line = cleanInputText(in.readLine());
+        switch (column) {
+          case 0:
+            date = line;
+            break;
+          case 1:
+            customerId = line.toInt();
+            break;
+          case 2:
+            itemPurchased = line;
+            break;
+          case 3:
+            price = line.toDouble();
+            break;
+          case 4:
+            quantity = line.toDouble();
+            break;
+          default:
+            break;
         }
-      inputFile.close();
+      }
+      qDebug() << date << customerId << itemPurchased << price << quantity;
     }
+    inputFile.close();
+  }
   return;
 }
-

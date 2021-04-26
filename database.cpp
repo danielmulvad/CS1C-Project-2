@@ -36,7 +36,6 @@ DbManager::DbManager(const QString &path) {
         "STRING, productPrice DOUBLE, "
         "productQuantity INT)");
     QSqlDatabase::database().commit();
-    this->listTables();
   } else {
     qDebug() << "Could not open SQLite3 connection";
   }

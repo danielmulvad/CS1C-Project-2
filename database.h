@@ -13,6 +13,7 @@ public:
   DbManager(const QString &);
   ~DbManager();
   void listTables();
+  QList<QList<QString>> getMembers();
   void importMembersFromFileSelection(QWidget *widget);
   void importPurchasesFromFileSelection(QWidget *widget);
 

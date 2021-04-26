@@ -23,6 +23,9 @@ private slots:
 private:
   Ui::CostcoPage *ui;
   DbManager *database;
+
+  void loadPurchasesTableFromDatabase();
+  void loadMembersTableFromDatabase();
 };
 
 #endif // COSTCOPAGE_H

@@ -156,3 +156,18 @@ void DbManager::importPurchasesFromFileSelection(QWidget *widget) {
   }
   return;
 }
+
+QList<QList<QString>> DbManager::getMembers() {
+   QList<QList<QString>> ret;
+   QSqlQuery getMembersQuery;
+   getMembersQuery.exec("SELECT * FROM members");
+   while (getMembersQuery.next()) {
+       QList<QString> temp;
+       temp.push_back(getMembersQuery.value(0).toString());
+       temp.push_back(getMembersQuery.value(1).toString());
+       temp.push_back(getMembersQuery.value(2).toString());
+       temp.push_back(getMembersQuery.value(3).toString());
+       ret.push_back(temp);
+   }
+   return ret;
+}

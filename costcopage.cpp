@@ -10,9 +10,7 @@ CostcoPage::CostcoPage(DbManager *db, QWidget *parent)
 
 CostcoPage::~CostcoPage() { delete ui; }
 
-void CostcoPage::loadPurchasesTableFromDatabase() {
-  return;
-}
+void CostcoPage::loadPurchasesTableFromDatabase() { return; }
 
 void CostcoPage::loadMembersTableFromDatabase() {
   QList<QList<QString>> members = this->database->getMembers();

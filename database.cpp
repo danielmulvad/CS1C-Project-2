@@ -43,7 +43,8 @@ DbManager::DbManager(const QString &path) {
 };
 
 DbManager::~DbManager() {
-  if (m_db.isOpen()) m_db.close();
+  if (m_db.isOpen())
+    m_db.close();
 };
 
 void DbManager::listTables() {
@@ -69,20 +70,20 @@ void DbManager::importMembersFromFileSelection(QWidget *widget) {
       for (int column = 0; column < 4; column++) {
         QString line = cleanInputText(in.readLine());
         switch (column) {
-          case 0:
-            customerName = line;
-            break;
-          case 1:
-            customerMemberNumber = line.toInt();
-            break;
-          case 2:
-            customerMembershipType = line;
-            break;
-          case 3:
-            customerMembershipExpiration = line;
-            break;
-          default:
-            break;
+        case 0:
+          customerName = line;
+          break;
+        case 1:
+          customerMemberNumber = line.toInt();
+          break;
+        case 2:
+          customerMembershipType = line;
+          break;
+        case 3:
+          customerMembershipExpiration = line;
+          break;
+        default:
+          break;
         }
       }
       QSqlQuery createMember;
@@ -117,28 +118,29 @@ void DbManager::importPurchasesFromFileSelection(QWidget *widget) {
       for (int column = 0; column < 5; column++) {
         QString line = cleanInputText(in.readLine());
         switch (column) {
-          case 0:
-            date = line;
-            break;
-          case 1:
-            customerId = line.toInt();
-            break;
-          case 2:
-            itemPurchased = line;
-            break;
-          case 3:
-            price = line.toDouble();
-            break;
-          case 4:
-            quantity = line.toDouble();
-            break;
-          default:
-            break;
+        case 0:
+          date = line;
+          break;
+        case 1:
+          customerId = line.toInt();
+          break;
+        case 2:
+          itemPurchased = line;
+          break;
+        case 3:
+          price = line.toDouble();
+          break;
+        case 4:
+          quantity = line.toDouble();
+          break;
+        default:
+          break;
         }
       }
       QSqlQuery createPurchase;
       createPurchase.prepare(
-          "INSERT INTO purchases (purchaseDate, customerId, productDescription, "
+          "INSERT INTO purchases (purchaseDate, customerId, "
+          "productDescription, "
           "productPrice, productQuantity) VALUES (:purchaseDate, :customerId, "
           ":productDescription, :productPrice, :productQuantity)");
       createPurchase.bindValue(":purchaseDate", date);

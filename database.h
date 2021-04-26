@@ -3,10 +3,10 @@
 #include <QDebug>
 #include <QDir>
 #include <QFileDialog>
+#include <QRegularExpression>
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QString>
-#include <QRegularExpression>
 
 class DbManager {
 public:

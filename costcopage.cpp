@@ -14,7 +14,6 @@ void CostcoPage::on_button_importPurchasesFromFileSelection_clicked() {
   this->database->importPurchasesFromFileSelection(this);
 }
 
-void CostcoPage::on_button_importMembersFromFileSelection_clicked()
-{
-    this->database->importMembersFromFileSelection(this);
+void CostcoPage::on_button_importMembersFromFileSelection_clicked() {
+  this->database->importMembersFromFileSelection(this);
 }

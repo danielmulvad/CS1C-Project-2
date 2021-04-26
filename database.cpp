@@ -19,11 +19,11 @@ DbManager::DbManager(const QString &path) {
         "UNIQUE NOT NULL, "
         "rebate DOUBLE NOT NULL, dues DOUBLE NOT NULL);");
     createMembershipsTable.exec(
-        "INSERT INTO memberships (type, rebate, dues) VALUES ('Regular', 2.00, "
+        "INSERT INTO memberships (type, rebate, dues) VALUES ('Regular', 0.00, "
         "65.00)");
     createMembershipsTable.exec(
         "INSERT INTO memberships (type, rebate, dues) VALUES ('Executive', "
-        "0.00, 120.00)");
+        "2.00, 120.00)");
     QSqlQuery createMembersTable;
     createMembersTable.exec(
         "CREATE TABLE IF NOT EXISTS members (name STRING NOT NULL, number INT "
@@ -62,6 +62,7 @@ void DbManager::importMembersFromFileSelection(QWidget *widget) {
   QFile inputFile(fileName);
   if (inputFile.open(QIODevice::ReadOnly)) {
     QTextStream in(&inputFile);
+    QSqlDatabase::database().transaction();
     while (!in.atEnd()) {
       QString customerName, customerMembershipType,
           customerMembershipExpiration;
@@ -85,10 +86,20 @@ void DbManager::importMembersFromFileSelection(QWidget *widget) {
           break;
         }
       }
+      QSqlQuery createMember;
+      createMember.prepare(
+          "INSERT INTO members (name, number, type, expirationDate) VALUES "
+          "(:name, :number, :type, :expirationDate)");
+      createMember.bindValue(":name", customerName);
+      createMember.bindValue(":number", customerMemberNumber);
+      createMember.bindValue(":type", customerMembershipType);
+      createMember.bindValue(":expirationDate", customerMembershipExpiration);
       qDebug() << customerName << customerMemberNumber << customerMembershipType
                << customerMembershipExpiration;
+      createMember.exec();
     }
     inputFile.close();
+    QSqlDatabase::database().commit();
   }
   return;
 }
@@ -99,6 +110,7 @@ void DbManager::importPurchasesFromFileSelection(QWidget *widget) {
   QFile inputFile(fileName);
   if (inputFile.open(QIODevice::ReadOnly)) {
     QTextStream in(&inputFile);
+    QSqlDatabase::database().transaction();
     while (!in.atEnd()) {
       QString date, itemPurchased;
       int customerId;
@@ -125,9 +137,22 @@ void DbManager::importPurchasesFromFileSelection(QWidget *widget) {
           break;
         }
       }
+      QSqlQuery createPurchase;
+      createPurchase.prepare(
+          "INSERT INTO purchases (purchaseDate, customerId, "
+          "productDescription, "
+          "productPrice, productQuantity) VALUES (:purchaseDate, :customerId, "
+          ":productDescription, :productPrice, :productQuantity)");
+      createPurchase.bindValue(":purchaseDate", date);
+      createPurchase.bindValue(":customerId", customerId);
+      createPurchase.bindValue(":productDescription", itemPurchased);
+      createPurchase.bindValue(":productPrice", price);
+      createPurchase.bindValue(":productQuantity", quantity);
       qDebug() << date << customerId << itemPurchased << price << quantity;
+      createPurchase.exec();
     }
     inputFile.close();
+    QSqlDatabase::database().commit();
   }
   return;
 }

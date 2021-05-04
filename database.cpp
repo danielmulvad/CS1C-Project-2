@@ -102,6 +102,7 @@ void DbManager::importMembersFromFileSelection(QWidget *widget) {
   }
   return;
 }
+
 void DbManager::importPurchasesFromFileSelection(QWidget *widget) {
   const auto fileName = QFileDialog::getOpenFileName(
       widget, "Open Purchases File", "", "Text Files (*.txt)");
@@ -166,6 +167,22 @@ QList<QList<QString>> DbManager::getMembers() {
     temp.push_back(getMembersQuery.value(1).toString());
     temp.push_back(getMembersQuery.value(2).toString());
     temp.push_back(getMembersQuery.value(3).toString());
+    ret.push_back(temp);
+  }
+  return ret;
+}
+
+QList<QList<QString>> DbManager::getPurchases() {
+  QList<QList<QString>> ret;
+  QSqlQuery getPurchasesQuery;
+  getPurchasesQuery.exec("SELECT * FROM purchases");
+  while (getPurchasesQuery.next()) {
+    QList<QString> temp;
+    temp.push_back(getPurchasesQuery.value(0).toString());
+    temp.push_back(getPurchasesQuery.value(1).toString());
+    temp.push_back(getPurchasesQuery.value(2).toString());
+    temp.push_back(getPurchasesQuery.value(3).toString());
+    temp.push_back(getPurchasesQuery.value(4).toString());
     ret.push_back(temp);
   }
   return ret;

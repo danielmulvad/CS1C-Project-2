@@ -14,6 +14,7 @@ public:
   ~DbManager();
   void listTables();
   QList<QList<QString>> getMembers();
+  QList<QList<QString>> getPurchases();
   void importMembersFromFileSelection(QWidget *widget);
   void importPurchasesFromFileSelection(QWidget *widget);
 

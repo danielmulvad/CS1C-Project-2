@@ -16,7 +16,6 @@ MainWindow::MainWindow(DbManager *db, QWidget *parent)
 MainWindow::~MainWindow() { delete ui; }
 
 void MainWindow::handle_login() {
-
   if (this->ui->username->text() == usernameKey &&
       this->ui->password->text() == passwordKey) {
     this->clear();

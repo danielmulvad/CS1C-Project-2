@@ -8,19 +8,20 @@ CostcoPage::CostcoPage(DbManager *db, QWidget *parent)
   ui->setupUi(this);
   this->loadMembersTableFromDatabase();
   this->loadPurchasesTableFromDatabase();
+  this->loadInventoryTableFromDatabase();
 }
 
 CostcoPage::~CostcoPage() { delete ui; }
 
 void CostcoPage::loadPurchasesTableFromDatabase() {
-  const int membersColumnsToRead = 5;
+  const int purchasesColumnsToRead = 5;
   QTableWidget *table = this->ui->SalesReportTable;
-  QList<QList<QString>> members = this->database->getPurchases();
-  for (int i = 0; i < members.count(); i++) {
+  QList<QList<QString>> purchases = this->database->getPurchases();
+  for (int i = 0; i < purchases.count(); i++) {
     table->insertRow(i);
-    for (int z = 0; z < membersColumnsToRead; z++) {
+    for (int z = 0; z < purchasesColumnsToRead; z++) {
       QTableWidgetItem *tableItem = new QTableWidgetItem;
-      tableItem->setText(members.at(i).at(z));
+      tableItem->setText(purchases.at(i).at(z));
       table->setItem(i, z, tableItem);
     }
   }
@@ -39,6 +40,21 @@ void CostcoPage::loadMembersTableFromDatabase() {
       table->setItem(i, z, tableItem);
     }
   }
+  return;
+}
+
+void CostcoPage::loadInventoryTableFromDatabase() {
+  const int inventoryColumnsToRead = 5;
+  QTableWidget *table = this->ui->InventoryListTable;
+//  QList<QList<QString>> inventory = this->database->getMembers();
+//  for (int i = 0; i < inventory.count(); i++) {
+//    table->insertRow(i);
+//    for (int z = 0; z < inventoryColumnsToRead; z++) {
+//      QTableWidgetItem *tableItem = new QTableWidgetItem;
+//      tableItem->setText(inventory.at(i).at(z));
+//      table->setItem(i, z, tableItem);
+//    }
+//  }
   return;
 }
 

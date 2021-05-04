@@ -26,6 +26,7 @@ private:
 
   void loadPurchasesTableFromDatabase();
   void loadMembersTableFromDatabase();
+  void loadInventoryTableFromDatabase();
 };
 
 #endif // COSTCOPAGE_H

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "database.h"
+#include "dashboard.h"
 #include <QMainWindow>
 #include <QString>
 
@@ -25,6 +26,7 @@ public slots:
 
 private:
   Ui::MainWindow *ui;
+  Dashboard *dashboard;
   DbManager *database;
   QString usernameKey = "Costco+";
   QString passwordKey = "123456";

@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "costcopage.h"
+#include "dashboard.h"
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -20,9 +20,8 @@ void MainWindow::handle_login() {
       this->ui->password->text() == passwordKey) {
     this->clear();
     this->ui->error->setText("");
-    CostcoPage page{this->database};
-    page.setModal(true);
-    page.exec();
+    this->dashboard = new Dashboard{this->database};
+    dashboard->show();
     this->close();
   } else {
     this->ui->error->setText("Incorrect login information!!!");

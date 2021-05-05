@@ -9,18 +9,18 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    costcopage.cpp \
+    dashboard.cpp \
     database.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
-    costcopage.h \
+    dashboard.h \
     database.h \
     mainwindow.h
 
 FORMS += \
-    costcopage.ui \
+    dashboard.ui \
     mainwindow.ui
 
 # Default rules for deployment.

@@ -50,27 +50,24 @@ void Dashboard::loadMembersTableFromDatabase() {
 void Dashboard::loadInventoryTableFromDatabase() {
   const int inventoryColumnsToRead = 5;
   QTableWidget *table = this->ui->InventoryListTable;
-//  QList<QList<QString>> inventory = this->database->getMembers();
-//  for (int i = 0; i < inventory.count(); i++) {
-//    table->insertRow(i);
-//    for (int z = 0; z < inventoryColumnsToRead; z++) {
-//      QTableWidgetItem *tableItem = new QTableWidgetItem;
-//      tableItem->setText(inventory.at(i).at(z));
-//      table->setItem(i, z, tableItem);
-//    }
-//  }
+  //  QList<QList<QString>> inventory = this->database->getMembers();
+  //  for (int i = 0; i < inventory.count(); i++) {
+  //    table->insertRow(i);
+  //    for (int z = 0; z < inventoryColumnsToRead; z++) {
+  //      QTableWidgetItem *tableItem = new QTableWidgetItem;
+  //      tableItem->setText(inventory.at(i).at(z));
+  //      table->setItem(i, z, tableItem);
+  //    }
+  //  }
   return;
 }
 
-
-void Dashboard::on_button_importMembersFromFileSelection_clicked()
-{
+void Dashboard::on_button_importMembersFromFileSelection_clicked() {
   this->database->importMembersFromFileSelection(this);
   loadMembersTableFromDatabase();
 }
 
-void Dashboard::on_button_importPurchasesFromFileSelection_clicked()
-{
+void Dashboard::on_button_importPurchasesFromFileSelection_clicked() {
   this->database->importPurchasesFromFileSelection(this);
   loadPurchasesTableFromDatabase();
 }

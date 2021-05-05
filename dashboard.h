@@ -32,4 +32,3 @@ private:
   void loadInventoryTableFromDatabase();
 };
 #endif // DASHBOARD_H
-

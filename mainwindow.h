@@ -1,8 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "database.h"
 #include "dashboard.h"
+#include "database.h"
 #include <QMainWindow>
 #include <QString>
 

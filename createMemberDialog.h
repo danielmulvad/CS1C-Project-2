@@ -4,11 +4,10 @@
 #include <QDialog>
 
 namespace Ui {
-  class CreateMemberDialog;
+class CreateMemberDialog;
 }
 
-class CreateMemberDialog : public QDialog
-{
+class CreateMemberDialog : public QDialog {
   Q_OBJECT
 
 public:

@@ -1,8 +1,8 @@
 #ifndef DASHBOARD_H
 #define DASHBOARD_H
 
-#include "database.h"
 #include "createMemberDialog.h"
+#include "database.h"
 #include <QMainWindow>
 #include <QString>
 

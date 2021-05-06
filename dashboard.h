@@ -2,6 +2,7 @@
 #define DASHBOARD_H
 
 #include "database.h"
+#include "createMemberDialog.h"
 #include <QMainWindow>
 #include <QString>
 
@@ -23,8 +24,11 @@ private slots:
   void on_button_importMembersFromFileSelection_clicked();
   void on_button_importPurchasesFromFileSelection_clicked();
 
+  void on_button_createMember_clicked();
+
 private:
   Ui::Dashboard *ui;
+  CreateMemberDialog *createMemberDialog;
   DbManager *database;
 
   void loadPurchasesTableFromDatabase();

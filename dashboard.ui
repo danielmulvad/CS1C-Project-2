@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>558</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -156,7 +156,7 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_4">
               <property name="spacing">
-               <number>-1</number>
+               <number>6</number>
               </property>
               <property name="leftMargin">
                <number>16</number>
@@ -298,12 +298,12 @@
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <property name="spacing">
-             <number>-1</number>
+             <number>6</number>
             </property>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_6">
               <property name="spacing">
-               <number>-1</number>
+               <number>6</number>
               </property>
               <property name="leftMargin">
                <number>16</number>
@@ -332,22 +332,17 @@
                 </column>
                 <column>
                  <property name="text">
-                  <string>Item ID Number</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
                   <string>Item Price</string>
                  </property>
                 </column>
                 <column>
                  <property name="text">
-                  <string>Quantity In Stock</string>
+                  <string>Quantity Sold</string>
                  </property>
                 </column>
                 <column>
                  <property name="text">
-                  <string>Quantity Sold</string>
+                  <string>Total Revenue</string>
                  </property>
                 </column>
                </widget>
@@ -370,7 +365,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCostco">

@@ -30,5 +30,8 @@ private:
   void loadPurchasesTableFromDatabase();
   void loadMembersTableFromDatabase();
   void loadInventoryTableFromDatabase();
+
+  void prepInventoryTable();
+  QList<QList<QString>> getInventory();
 };
 #endif // DASHBOARD_H

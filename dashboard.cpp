@@ -81,7 +81,7 @@ QList<QList<QString>> Dashboard::getInventory() {
     }
 
     // add new item
-    if (index == -1 && inventory.at(i).at(0) != NULL) {
+    if (index == -1 && inventory.at(i).at(0) != "") {
       QList<QString> temp;
       temp.push_back(inventory.at(i).at(2));
       temp.push_back(QString::number(inventory.at(i).at(3).toDouble(), 'f', 2));
@@ -94,7 +94,7 @@ QList<QList<QString>> Dashboard::getInventory() {
     }
 
     // update current item if not a NULL item
-    else if (inventory.at(i).at(0) != NULL) {
+    else if (inventory.at(i).at(0) != "") {
       combined[index][2] = QString::number(combined.at(index).at(2).toInt() +
                                            inventory.at(i).at(4).toInt());
       combined[index][3] = QString::number(

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>819</width>
-    <height>611</height>
+    <height>627</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -131,7 +131,7 @@
        <item>
         <widget class="QTabWidget" name="tabWidget">
          <property name="currentIndex">
-          <number>1</number>
+          <number>5</number>
          </property>
          <widget class="QWidget" name="tab_membershipInformation">
           <property name="font">
@@ -352,11 +352,325 @@
            </layout>
           </widget>
          </widget>
+         <widget class="QWidget" name="tab">
+          <attribute name="title">
+           <string>Search Item</string>
+          </attribute>
+          <widget class="QLabel" name="label">
+           <property name="geometry">
+            <rect>
+             <x>30</x>
+             <y>20</y>
+             <width>101</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Item&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_2">
+           <property name="geometry">
+            <rect>
+             <x>30</x>
+             <y>70</y>
+             <width>111</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Enter Item Name:</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="item">
+           <property name="geometry">
+            <rect>
+             <x>120</x>
+             <y>70</y>
+             <width>113</width>
+             <height>20</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton">
+           <property name="geometry">
+            <rect>
+             <x>250</x>
+             <y>70</y>
+             <width>75</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Search</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="name">
+           <property name="geometry">
+            <rect>
+             <x>420</x>
+             <y>50</y>
+             <width>201</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QLabel" name="quantity">
+           <property name="geometry">
+            <rect>
+             <x>420</x>
+             <y>70</y>
+             <width>201</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QLabel" name="revenue">
+           <property name="geometry">
+            <rect>
+             <x>420</x>
+             <y>90</y>
+             <width>201</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QLabel" name="errorMessage">
+           <property name="geometry">
+            <rect>
+             <x>380</x>
+             <y>70</y>
+             <width>341</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="tab_2">
+          <attribute name="title">
+           <string>Search Member</string>
+          </attribute>
+          <widget class="QLabel" name="label_3">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>20</y>
+             <width>101</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Member&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_4">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>70</y>
+             <width>191</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Enter Member Name or ID:</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="member">
+           <property name="geometry">
+            <rect>
+             <x>160</x>
+             <y>70</y>
+             <width>113</width>
+             <height>20</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="search">
+           <property name="geometry">
+            <rect>
+             <x>300</x>
+             <y>70</y>
+             <width>75</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Search</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="error">
+           <property name="geometry">
+            <rect>
+             <x>440</x>
+             <y>70</y>
+             <width>261</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QLabel" name="memberName">
+           <property name="geometry">
+            <rect>
+             <x>480</x>
+             <y>60</y>
+             <width>221</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QLabel" name="purchases">
+           <property name="geometry">
+            <rect>
+             <x>480</x>
+             <y>80</y>
+             <width>251</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="tab_Expiration">
+          <attribute name="title">
+           <string>Expiration Date</string>
+          </attribute>
+          <widget class="QComboBox" name="comboBox">
+           <property name="geometry">
+            <rect>
+             <x>550</x>
+             <y>30</y>
+             <width>191</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <item>
+            <property name="text">
+             <string>January</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>February</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>March</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>April</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>May</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>June</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>July</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>August</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>September</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>October</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>November</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>December</string>
+            </property>
+           </item>
+          </widget>
+          <widget class="QLabel" name="label_5">
+           <property name="geometry">
+            <rect>
+             <x>550</x>
+             <y>10</y>
+             <width>171</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Select a Month</string>
+           </property>
+          </widget>
+         </widget>
         </widget>
        </item>
       </layout>
      </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="GrandTotal">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>560</y>
+      <width>221</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Grand Sales Total: $0.00</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -365,7 +679,7 @@
      <x>0</x>
      <y>0</y>
      <width>819</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCostco">
@@ -378,5 +692,42 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Dashboard</receiver>
+   <slot>searchForItem()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>428</x>
+     <y>228</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>432</x>
+     <y>573</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>search</sender>
+   <signal>clicked()</signal>
+   <receiver>Dashboard</receiver>
+   <slot>searchForMember()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>426</x>
+     <y>211</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>800</x>
+     <y>237</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>searchForItem()</slot>
+  <slot>searchForMember()</slot>
+ </slots>
 </ui>

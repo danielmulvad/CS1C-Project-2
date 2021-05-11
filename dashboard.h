@@ -1,6 +1,7 @@
 #ifndef DASHBOARD_H
 #define DASHBOARD_H
 
+#include "createMemberDialog.h"
 #include "database.h"
 #include <QMainWindow>
 #include <QString>
@@ -23,12 +24,18 @@ private slots:
   void on_button_importMembersFromFileSelection_clicked();
   void on_button_importPurchasesFromFileSelection_clicked();
 
+  void on_button_createMember_clicked();
+
 private:
   Ui::Dashboard *ui;
+  CreateMemberDialog *createMemberDialog;
   DbManager *database;
 
   void loadPurchasesTableFromDatabase();
   void loadMembersTableFromDatabase();
   void loadInventoryTableFromDatabase();
+
+  void prepInventoryTable();
+  QList<QList<QString>> getInventory();
 };
 #endif // DASHBOARD_H

@@ -26,6 +26,9 @@ private slots:
 
   void on_button_createMember_clicked();
 
+  void searchForItem();
+  void searchForMember();
+
 private:
   Ui::Dashboard *ui;
   CreateMemberDialog *createMemberDialog;
@@ -37,5 +40,7 @@ private:
 
   void prepInventoryTable();
   QList<QList<QString>> getInventory();
+
+  void loadMemberPurchaseLog();
 };
 #endif // DASHBOARD_H

@@ -134,116 +134,121 @@ void Dashboard::loadInventoryTableFromDatabase() {
 
 void Dashboard::loadMemberPurchaseLog() {
 
-    QList<QList<QString>> inventory = this->database->getPurchases();
-    QTableWidget *table = this->ui->MembershipInformationTable;
-    double grandTotal = 0.0;
+  QList<QList<QString>> inventory = this->database->getPurchases();
+  QTableWidget *table = this->ui->MembershipInformationTable;
+  double grandTotal = 0.0;
 
-    for(int i=0; i < table->rowCount(); i++) {
+  for (int i = 0; i < table->rowCount(); i++) {
 
-        QString memberNum = table->item(i, 1)->text();
-        qDebug() << memberNum;
-        double total = 0.0;
+    QString memberNum = table->item(i, 1)->text();
+    qDebug() << memberNum;
+    double total = 0.0;
 
-        for(int j=0; j < inventory.count(); j++) {
-            if(inventory.at(j).at(1) == memberNum) {
-                total += inventory.at(j).at(3).toDouble() * inventory.at(j).at(4).toInt() * 1.775;
-                grandTotal += inventory.at(j).at(3).toDouble() * inventory.at(j).at(4).toInt() * 1.775;
-            }
-        }
-
-        QTableWidgetItem *item = new QTableWidgetItem;
-        item->setText(QString::number(total, 'f', 2));
-        table->setItem(i, 4, item);
+    for (int j = 0; j < inventory.count(); j++) {
+      if (inventory.at(j).at(1) == memberNum) {
+        total += inventory.at(j).at(3).toDouble() *
+                 inventory.at(j).at(4).toInt() * 1.775;
+        grandTotal += inventory.at(j).at(3).toDouble() *
+                      inventory.at(j).at(4).toInt() * 1.775;
+      }
     }
 
-    this->ui->GrandTotal->setText("Grand Total: $" + QString::number(grandTotal, 'f', 2));
+    QTableWidgetItem *item = new QTableWidgetItem;
+    item->setText(QString::number(total, 'f', 2));
+    table->setItem(i, 4, item);
+  }
+
+  this->ui->GrandTotal->setText("Grand Total: $" +
+                                QString::number(grandTotal, 'f', 2));
 }
 
 void Dashboard::searchForItem() {
 
-    this->ui->name->setText("");
-    this->ui->quantity->setText("");
-    this->ui->revenue->setText("");
-    this->ui->errorMessage->setText("");
+  this->ui->name->setText("");
+  this->ui->quantity->setText("");
+  this->ui->revenue->setText("");
+  this->ui->errorMessage->setText("");
 
-    QString searchItem = this->ui->item->text();
-    qDebug() << "Search Item: " + searchItem;
-    QTableWidget *table = this->ui->InventoryListTable;
+  QString searchItem = this->ui->item->text();
+  qDebug() << "Search Item: " + searchItem;
+  QTableWidget *table = this->ui->InventoryListTable;
 
-    for(int i=0; i < table->rowCount(); i++) {
-        if(searchItem == table->item(i, 0)->text()) {
-            qDebug() << "found item";
-            this->ui->name->setText(searchItem);
-            this->ui->quantity->setText("Quantity Sold: " + table->item(i, 2)->text());
-            this->ui->revenue->setText("Total Revenue: $" + table->item(i, 3)->text());
-            return;
-        }
+  for (int i = 0; i < table->rowCount(); i++) {
+    if (searchItem == table->item(i, 0)->text()) {
+      qDebug() << "found item";
+      this->ui->name->setText(searchItem);
+      this->ui->quantity->setText("Quantity Sold: " +
+                                  table->item(i, 2)->text());
+      this->ui->revenue->setText("Total Revenue: $" +
+                                 table->item(i, 3)->text());
+      return;
     }
+  }
 
-    this->ui->errorMessage->setText("Could not find item.");
-
+  this->ui->errorMessage->setText("Could not find item.");
 }
 
 void Dashboard::searchForMember() {
 
-    this->ui->memberName->setText("");
-    this->ui->purchases->setText("");
-    this->ui->error->setText("");
+  this->ui->memberName->setText("");
+  this->ui->purchases->setText("");
+  this->ui->error->setText("");
 
-    QString searchMember = this->ui->member->text();
-    qDebug() << "Search Member: " << searchMember;
-    QTableWidget *table = this->ui->MembershipInformationTable;
+  QString searchMember = this->ui->member->text();
+  qDebug() << "Search Member: " << searchMember;
+  QTableWidget *table = this->ui->MembershipInformationTable;
 
-    for(int i=0; i < table->rowCount(); i++) {
-        if(searchMember == table->item(i, 0)->text() || searchMember == table->item(i, 1)->text()) {
-            qDebug() << "found item";
-            this->ui->memberName->setText(table->item(i, 0)->text());
-            this->ui->purchases->setText("Total Purchases: $" + table->item(i, 4)->text());
-            return;
-        }
+  for (int i = 0; i < table->rowCount(); i++) {
+    if (searchMember == table->item(i, 0)->text() ||
+        searchMember == table->item(i, 1)->text()) {
+      qDebug() << "found item";
+      this->ui->memberName->setText(table->item(i, 0)->text());
+      this->ui->purchases->setText("Total Purchases: $" +
+                                   table->item(i, 4)->text());
+      return;
     }
+  }
 
-    this->ui->error->setText("Could not find member.");
+  this->ui->error->setText("Could not find member.");
 }
 
 void Dashboard::membershipExpirationByMonth() {
 
-    this->ui->expirationTable->setRowCount(0);
+  this->ui->expirationTable->setRowCount(0);
 
-    // set column width
-    for (int i = 0; i < 2; i++) {
-      this->ui->expirationTable->setColumnWidth(i, 350);
+  // set column width
+  for (int i = 0; i < 2; i++) {
+    this->ui->expirationTable->setColumnWidth(i, 350);
+  }
+
+  int expMonth = this->ui->months->currentIndex() + 1;
+  QList<QList<QString>> members = this->database->getMembers();
+  QTableWidget *table = this->ui->expirationTable;
+
+  for (int i = 0; i < members.count(); i++) {
+
+    QString name = members.at(i).at(0);
+    QString expDate = members.at(i).at(3);
+    int memExpMon = expDate.left(2).toInt();
+
+    if (expMonth == memExpMon) {
+
+      table->insertRow(table->rowCount());
+
+      QTableWidgetItem *memName = new QTableWidgetItem;
+      QTableWidgetItem *costToRenew = new QTableWidgetItem;
+
+      memName->setText(name);
+
+      if (members.at(i).at(2) == "Executive")
+        costToRenew->setText("$120.00");
+      else
+        costToRenew->setText("$65.00");
+
+      table->setItem(table->rowCount() - 1, 0, memName);
+      table->setItem(table->rowCount() - 1, 1, costToRenew);
     }
-
-    int expMonth = this->ui->months->currentIndex() + 1;
-    QList<QList<QString>> members = this->database->getMembers();
-    QTableWidget *table = this->ui->expirationTable;
-
-    for(int i=0; i < members.count(); i++) {
-
-        QString name = members.at(i).at(0);
-        QString expDate = members.at(i).at(3);
-        int memExpMon = expDate.left(2).toInt();
-
-        if(expMonth == memExpMon) {
-
-            table->insertRow(table->rowCount());
-
-            QTableWidgetItem *memName = new QTableWidgetItem;
-            QTableWidgetItem *costToRenew = new QTableWidgetItem;
-
-            memName->setText(name);
-
-            if(members.at(i).at(2) == "Executive")
-                costToRenew->setText("$120.00");
-            else
-                costToRenew->setText("$65.00");
-
-            table->setItem(table->rowCount()-1, 0, memName);
-            table->setItem(table->rowCount()-1, 1, costToRenew);
-
-        }
-    }
+  }
 }
 
 void Dashboard::on_button_importMembersFromFileSelection_clicked() {

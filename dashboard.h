@@ -29,6 +29,8 @@ private slots:
   void searchForItem();
   void searchForMember();
 
+  void membershipExpirationByMonth();
+
 private:
   Ui::Dashboard *ui;
   CreateMemberDialog *createMemberDialog;

@@ -280,9 +280,7 @@ void Dashboard::on_button_createMember_clicked() {
 void Dashboard::on_button_deleteMember_clicked() {
   QTableWidget *table = this->ui->MembershipInformationTable;
   const int currentRowIndex = table->currentRow();
-  QPoint point{2, currentRowIndex};
   const int memberId = table->item(currentRowIndex, 1)->text().toInt();
-  qDebug() << "index: " << currentRowIndex << "id: " << memberId;
   if (database->deleteMember(memberId)) {
     table->removeRow(currentRowIndex);
   }

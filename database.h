@@ -17,7 +17,7 @@ public:
   QList<QList<QString>> getPurchases();
   void importMembersFromFileSelection(QWidget *widget);
   void importPurchasesFromFileSelection(QWidget *widget);
-
+  bool createMember(QString &name, int &id, QString &type, QDate &expDate);
 private:
   QSqlDatabase m_db;
 };

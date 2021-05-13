@@ -172,6 +172,20 @@ QList<QList<QString>> DbManager::getMembers() {
   return ret;
 }
 
+bool DbManager::createMember(QString& customerName, int &customerMemberNumber, QString &customerMembershipType, QDate &customerMembershipExpiration) {
+  QSqlQuery createMember;
+  createMember.prepare(
+      "INSERT INTO members (name, number, type, expirationDate) VALUES "
+      "(:name, :number, :type, :expirationDate)");
+  createMember.bindValue(":name", customerName);
+  createMember.bindValue(":number", customerMemberNumber);
+  createMember.bindValue(":type", customerMembershipType);
+  createMember.bindValue(":expirationDate", customerMembershipExpiration);
+  qDebug() << customerName << customerMemberNumber << customerMembershipType
+           << customerMembershipExpiration;
+  return createMember.exec();
+}
+
 QList<QList<QString>> DbManager::getPurchases() {
   QList<QList<QString>> ret;
   QSqlQuery getPurchasesQuery;

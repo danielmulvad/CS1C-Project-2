@@ -14,6 +14,11 @@ public:
   explicit CreateMemberDialog(QWidget *parent = nullptr);
   ~CreateMemberDialog();
 
+  QString getName() const;
+  int getId() const;
+  QString getType() const;
+  QDate getExpirationDate() const;
+
 private:
   Ui::CreateMemberDialog *ui;
 };

@@ -1,9 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <author/>
- <comment/>
- <exportmacro/>
  <class>CreateMemberDialog</class>
- <widget name="CreateMemberDialog" class="QDialog">
+ <widget class="QDialog" name="CreateMemberDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -15,12 +13,15 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget name="buttonBox" class="QDialogButtonBox">
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>240</y>
-     <width>341</width>
+     <x>0</x>
+     <y>260</y>
+     <width>401</width>
      <height>32</height>
     </rect>
    </property>
@@ -31,8 +32,59 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>381</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLineEdit" name="input_memberName">
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>Member Name</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="input_id">
+      <property name="placeholderText">
+       <string>Membership Number</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="input_type">
+      <property name="currentText">
+       <string>Regular</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <item>
+       <property name="text">
+        <string>Regular</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Executive</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item>
+     <widget class="QDateEdit" name="input_expirationDate"/>
+    </item>
+   </layout>
+  </widget>
  </widget>
- <pixmapfunction/>
  <resources/>
  <connections>
   <connection>

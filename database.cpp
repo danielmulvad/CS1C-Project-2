@@ -28,11 +28,11 @@ DbManager::DbManager(const QString &path) {
     createMembersTable.exec(
         "CREATE TABLE IF NOT EXISTS members (name STRING NOT NULL, number INT "
         "PRIMARY KEY UNIQUE NOT NULL, type STRING NOT NULL REFERENCES "
-        "memberships (type), expirationDate DATE NOT NULL)");
+        "memberships (type) ON DELETE NO ACTION ON UPDATE NO ACTION, expirationDate DATE NOT NULL)");
     QSqlQuery createPurchasesTable;
     createPurchasesTable.exec(
         "CREATE TABLE IF NOT EXISTS purchases (purchaseDate DATE NOT NULL, "
-        "customerId INT REFERENCES members (number), productDescription "
+        "customerId INT REFERENCES members (number) ON DELETE NO ACTION ON UPDATE NO ACTION, productDescription "
         "STRING, productPrice DOUBLE, "
         "productQuantity INT)");
     QSqlDatabase::database().commit();
@@ -63,8 +63,8 @@ void DbManager::importMembersFromFileSelection(QWidget *widget) {
     QTextStream in(&inputFile);
     QSqlDatabase::database().transaction();
     while (!in.atEnd()) {
-      QString customerName, customerMembershipType,
-          customerMembershipExpiration;
+      QString customerName, customerMembershipType;
+      QDate customerMembershipExpiration;
       int customerMemberNumber;
       for (int column = 0; column < 4; column++) {
         QString line = cleanInputText(in.readLine());
@@ -79,23 +79,13 @@ void DbManager::importMembersFromFileSelection(QWidget *widget) {
           customerMembershipType = line;
           break;
         case 3:
-          customerMembershipExpiration = line;
+          customerMembershipExpiration = QDate::fromString(line,"MM/dd/yyyy");
           break;
         default:
           break;
         }
       }
-      QSqlQuery createMember;
-      createMember.prepare(
-          "INSERT INTO members (name, number, type, expirationDate) VALUES "
-          "(:name, :number, :type, :expirationDate)");
-      createMember.bindValue(":name", customerName);
-      createMember.bindValue(":number", customerMemberNumber);
-      createMember.bindValue(":type", customerMembershipType);
-      createMember.bindValue(":expirationDate", customerMembershipExpiration);
-      qDebug() << customerName << customerMemberNumber << customerMembershipType
-               << customerMembershipExpiration;
-      createMember.exec();
+      this->createMember(customerName, customerMemberNumber, customerMembershipType, customerMembershipExpiration);
     }
     inputFile.close();
     QSqlDatabase::database().commit();
@@ -182,7 +172,7 @@ bool DbManager::createMember(QString &customerName, int &customerMemberNumber,
   createMember.bindValue(":name", customerName);
   createMember.bindValue(":number", customerMemberNumber);
   createMember.bindValue(":type", customerMembershipType);
-  createMember.bindValue(":expirationDate", customerMembershipExpiration);
+  createMember.bindValue(":expirationDate", customerMembershipExpiration.toString("MM/dd/yyyy"));
   qDebug() << customerName << customerMemberNumber << customerMembershipType
            << customerMembershipExpiration;
   return createMember.exec();

@@ -226,10 +226,9 @@ void Dashboard::membershipExpirationByMonth() {
   QTableWidget *table = this->ui->expirationTable;
 
   for (int i = 0; i < members.count(); i++) {
-
     QString name = members.at(i).at(0);
-    QString expDate = members.at(i).at(3);
-    int memExpMon = expDate.left(2).toInt();
+    QDate expDate = QDate::fromString(members.at(i).at(3), "MM/dd/yyyy");
+    int memExpMon = expDate.month();
 
     if (expMonth == memExpMon) {
 
@@ -272,8 +271,9 @@ void Dashboard::on_button_createMember_clicked() {
     int id = this->createMemberDialog->getId();
     QDate expDate = this->createMemberDialog->getExpirationDate();
     this->database->createMember(name, id, type, expDate);
-    this->loadMembersTableFromDatabase();
-    this->loadMemberPurchaseLog();
+    this->ui->MembershipInformationTable->setRowCount(0);
+    loadMembersTableFromDatabase();
+    loadMemberPurchaseLog();
     qDebug() << "Accepted dialog " << name << type << id << expDate;
   }
 }

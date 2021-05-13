@@ -3,9 +3,9 @@
 
 #include "createMemberDialog.h"
 #include "database.h"
+#include <QDate>
 #include <QMainWindow>
 #include <QString>
-#include <QDate>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

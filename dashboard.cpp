@@ -147,24 +147,24 @@ void Dashboard::loadMemberPurchaseLog() {
 
     for (int j = 0; j < inventory.count(); j++) {
       if (inventory.at(j).at(1) == memberNum) {
-        total += inventory.at(j).at(3).toDouble() *
-                 inventory.at(j).at(4).toInt();
+        total +=
+            inventory.at(j).at(3).toDouble() * inventory.at(j).at(4).toInt();
         grandTotal += inventory.at(j).at(3).toDouble() *
                       inventory.at(j).at(4).toInt() * 1.775;
       }
     }
 
     QTableWidgetItem *item = new QTableWidgetItem;
-    item->setText(QString::number(total*1.775, 'f', 2));
+    item->setText(QString::number(total * 1.775, 'f', 2));
     table->setItem(i, 4, item);
 
-    if(table->item(i, 2)->text() == "Executive") {
+    if (table->item(i, 2)->text() == "Executive") {
 
-        QTableWidgetItem *rebate = new QTableWidgetItem;
-        rebate->setText(QString::number(total*0.02, 'f', 2));
-        table->setItem(i, 5, rebate);
+      QTableWidgetItem *rebate = new QTableWidgetItem;
+      rebate->setText(QString::number(total * 0.02, 'f', 2));
+      table->setItem(i, 5, rebate);
 
-        qDebug() << total << " " << rebate->text();
+      qDebug() << total << " " << rebate->text();
     }
   }
 
@@ -260,45 +260,45 @@ void Dashboard::membershipExpirationByMonth() {
   }
 }
 
-
 void Dashboard::loadMemberConversions() {
 
-    this->ui->regularTable->setRowCount(0);
-    this->ui->executiveTable->setRowCount(0);
+  this->ui->regularTable->setRowCount(0);
+  this->ui->executiveTable->setRowCount(0);
 
-    // set column width
-    this->ui->regularTable->setColumnWidth(0, 256);
-    this->ui->executiveTable->setColumnWidth(0, 256);
+  // set column width
+  this->ui->regularTable->setColumnWidth(0, 256);
+  this->ui->executiveTable->setColumnWidth(0, 256);
 
-    QTableWidget *table = this->ui->MembershipInformationTable;
-    QTableWidget *exec = this->ui->executiveTable;
-    QTableWidget *reg = this->ui->regularTable;
-    int limit = 120-65;
+  QTableWidget *table = this->ui->MembershipInformationTable;
+  QTableWidget *exec = this->ui->executiveTable;
+  QTableWidget *reg = this->ui->regularTable;
+  int limit = 120 - 65;
 
-    for(int i = 0; i < table->rowCount(); i++) {
+  for (int i = 0; i < table->rowCount(); i++) {
 
-        if(table->item(i, 2)->text() == "Executive") {
-            if(table->item(i, 5)->text().toDouble() < limit) {
-                exec->insertRow(exec->rowCount());
-                QTableWidgetItem *member = new QTableWidgetItem;
-                member->setText(table->item(i, 0)->text());
-                exec->setItem(exec->rowCount()-1, 0, member);
-            }
-        }
-        else {
-            if(table->item(i, 4)->text().toDouble()/1.0775*0.02 > limit) {
-                reg->insertRow(reg->rowCount());
-                QTableWidgetItem *member = new QTableWidgetItem;
-                member->setText(table->item(i, 0)->text());
-                reg->setItem(reg->rowCount()-1, 0, member);
-            }
-        }
+    if (table->item(i, 2)->text() == "Executive") {
+      if (table->item(i, 5)->text().toDouble() < limit) {
+        exec->insertRow(exec->rowCount());
+        QTableWidgetItem *member = new QTableWidgetItem;
+        member->setText(table->item(i, 0)->text());
+        exec->setItem(exec->rowCount() - 1, 0, member);
+      }
+    } else {
+      if (table->item(i, 4)->text().toDouble() / 1.0775 * 0.02 > limit) {
+        reg->insertRow(reg->rowCount());
+        QTableWidgetItem *member = new QTableWidgetItem;
+        member->setText(table->item(i, 0)->text());
+        reg->setItem(reg->rowCount() - 1, 0, member);
+      }
     }
+  }
 
-    qDebug() << "out of for loop";
+  qDebug() << "out of for loop";
 
-    this->ui->regular->setText("Total Regular Conversions: " + QString::number(reg->rowCount()));
-    this->ui->executive->setText("Total Executive Conversions: " + QString::number(exec->rowCount()));
+  this->ui->regular->setText("Total Regular Conversions: " +
+                             QString::number(reg->rowCount()));
+  this->ui->executive->setText("Total Executive Conversions: " +
+                               QString::number(exec->rowCount()));
 }
 
 void Dashboard::on_button_importMembersFromFileSelection_clicked() {
@@ -311,7 +311,7 @@ void Dashboard::on_button_importPurchasesFromFileSelection_clicked() {
   loadPurchasesTableFromDatabase();
   loadInventoryTableFromDatabase();
   loadMemberPurchaseLog();
-  //loadMemberConversions();
+  // loadMemberConversions();
 }
 
 void Dashboard::on_button_createMember_clicked() {

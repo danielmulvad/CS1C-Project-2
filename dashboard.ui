@@ -54,13 +54,69 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget">
+   <widget class="QWidget" name="horizontalLayoutWidget_2">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>50</y>
       <width>781</width>
-      <height>491</height>
+      <height>51</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetNoConstraint</enum>
+     </property>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_importMembersFromFileSelection">
+       <property name="text">
+        <string>Import Members</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_importPurchasesFromFileSelection">
+       <property name="text">
+        <string>Import Purchases</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_createMember">
+       <property name="text">
+        <string>Create Member</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_saveAll">
+       <property name="text">
+        <string>Save All</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>781</width>
+      <height>441</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -90,10 +146,10 @@
           <widget class="QWidget" name="verticalLayoutWidget_2">
            <property name="geometry">
             <rect>
-             <x>0</x>
+             <x>-10</x>
              <y>0</y>
-             <width>771</width>
-             <height>461</height>
+             <width>801</width>
+             <height>411</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -207,47 +263,13 @@
           <widget class="QWidget" name="verticalLayoutWidget_5">
            <property name="geometry">
             <rect>
-             <x>0</x>
+             <x>-10</x>
              <y>0</y>
-             <width>771</width>
-             <height>461</height>
+             <width>801</width>
+             <height>411</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_5">
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_9">
-              <property name="sizeConstraint">
-               <enum>QLayout::SetNoConstraint</enum>
-              </property>
-              <item>
-               <spacer name="horizontalSpacer_5">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QPushButton" name="button_importPurchasesFromFileSelection">
-                <property name="text">
-                 <string>Import Purchases</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="button_createPurchase">
-                <property name="text">
-                 <string>Create Purchase</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_8">
               <property name="spacing">
@@ -312,10 +334,10 @@
           <widget class="QWidget" name="verticalLayoutWidget_6">
            <property name="geometry">
             <rect>
-             <x>0</x>
+             <x>-10</x>
              <y>0</y>
-             <width>771</width>
-             <height>461</height>
+             <width>801</width>
+             <height>411</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -690,7 +712,7 @@
              <x>20</x>
              <y>110</y>
              <width>731</width>
-             <height>341</height>
+             <height>281</height>
             </rect>
            </property>
            <column>
@@ -716,6 +738,80 @@
            <property name="text">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Membership Expirations by Month&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="tab_rebateConversion">
+          <attribute name="title">
+           <string>Conversions</string>
+          </attribute>
+          <widget class="QLabel" name="label_7">
+           <property name="geometry">
+            <rect>
+             <x>50</x>
+             <y>30</y>
+             <width>461</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Recommended Conversions&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="regular">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>340</y>
+             <width>271</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Total Regular Conversions: </string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="exceutive">
+           <property name="geometry">
+            <rect>
+             <x>460</x>
+             <y>340</y>
+             <width>171</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Total Executive Conversions: </string>
+           </property>
+          </widget>
+          <widget class="QTableWidget" name="regularTable">
+           <property name="geometry">
+            <rect>
+             <x>50</x>
+             <y>100</y>
+             <width>256</width>
+             <height>192</height>
+            </rect>
+           </property>
+           <column>
+            <property name="text">
+             <string>Regular</string>
+            </property>
+           </column>
+          </widget>
+          <widget class="QTableWidget" name="executiveTable">
+           <property name="geometry">
+            <rect>
+             <x>450</x>
+             <y>100</y>
+             <width>256</width>
+             <height>192</height>
+            </rect>
+           </property>
+           <column>
+            <property name="text">
+             <string>Executive</string>
+            </property>
+           </column>
           </widget>
          </widget>
         </widget>
@@ -744,7 +840,7 @@
      <x>0</x>
      <y>0</y>
      <width>819</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCostco">
@@ -759,18 +855,18 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
+   <sender>pushButton_2</sender>
    <signal>clicked()</signal>
    <receiver>Dashboard</receiver>
-   <slot>searchForItem()</slot>
+   <slot>membershipExpirationByMonth()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>338</x>
-     <y>237</y>
+     <x>728</x>
+     <y>221</y>
     </hint>
     <hint type="destinationlabel">
-     <x>432</x>
-     <y>573</y>
+     <x>939</x>
+     <y>532</y>
     </hint>
    </hints>
   </connection>
@@ -791,18 +887,18 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_2</sender>
+   <sender>pushButton</sender>
    <signal>clicked()</signal>
    <receiver>Dashboard</receiver>
-   <slot>membershipExpirationByMonth()</slot>
+   <slot>searchForItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>728</x>
-     <y>221</y>
+     <x>338</x>
+     <y>237</y>
     </hint>
     <hint type="destinationlabel">
-     <x>939</x>
-     <y>532</y>
+     <x>432</x>
+     <y>573</y>
     </hint>
    </hints>
   </connection>

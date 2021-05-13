@@ -172,7 +172,9 @@ QList<QList<QString>> DbManager::getMembers() {
   return ret;
 }
 
-bool DbManager::createMember(QString& customerName, int &customerMemberNumber, QString &customerMembershipType, QDate &customerMembershipExpiration) {
+bool DbManager::createMember(QString &customerName, int &customerMemberNumber,
+                             QString &customerMembershipType,
+                             QDate &customerMembershipExpiration) {
   QSqlQuery createMember;
   createMember.prepare(
       "INSERT INTO members (name, number, type, expirationDate) VALUES "

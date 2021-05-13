@@ -267,13 +267,13 @@ void Dashboard::on_button_createMember_clicked() {
   this->createMemberDialog = new CreateMemberDialog();
   this->createMemberDialog->show();
   if (this->createMemberDialog->exec() == QDialog::Accepted) {
-      QString name = this->createMemberDialog->getName();
-      QString type = this->createMemberDialog->getType();
-      int id = this->createMemberDialog->getId();
-      QDate expDate = this->createMemberDialog->getExpirationDate();
-      this->database->createMember(name, id, type, expDate);
-      this->loadMembersTableFromDatabase();
-      this->loadMemberPurchaseLog();
-      qDebug() << "Accepted dialog " << name << type << id << expDate;
+    QString name = this->createMemberDialog->getName();
+    QString type = this->createMemberDialog->getType();
+    int id = this->createMemberDialog->getId();
+    QDate expDate = this->createMemberDialog->getExpirationDate();
+    this->database->createMember(name, id, type, expDate);
+    this->loadMembersTableFromDatabase();
+    this->loadMemberPurchaseLog();
+    qDebug() << "Accepted dialog " << name << type << id << expDate;
   }
 }

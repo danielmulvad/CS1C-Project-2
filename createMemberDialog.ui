@@ -14,6 +14,9 @@
    <string>Dialog</string>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -40,7 +43,7 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLineEdit" name="memberName">
+     <widget class="QLineEdit" name="input_memberName">
       <property name="text">
        <string/>
       </property>
@@ -50,21 +53,14 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="input_id">
       <property name="placeholderText">
        <string>Membership Number</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit_3">
-      <property name="placeholderText">
-       <string>Membership Type</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QComboBox" name="comboBox">
+     <widget class="QComboBox" name="input_type">
       <property name="currentText">
        <string>Regular</string>
       </property>
@@ -84,7 +80,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QDateEdit" name="expirationDate"/>
+     <widget class="QDateEdit" name="input_expirationDate"/>
     </item>
    </layout>
   </widget>

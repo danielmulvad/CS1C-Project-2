@@ -256,6 +256,9 @@ void Dashboard::loadMemberConversions() {
   this->ui->regularTable->setRowCount(0);
   this->ui->executiveTable->setRowCount(0);
 
+  this->ui->regularTable->setRowCount(0);
+  this->ui->executiveTable->setRowCount(0);
+
   // set column width
   this->ui->regularTable->setColumnWidth(0, 256);
   this->ui->executiveTable->setColumnWidth(0, 256);

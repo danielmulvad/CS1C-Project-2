@@ -1,4 +1,5 @@
 #include "dashboard.h"
+
 #include "ui_dashboard.h"
 
 Dashboard::Dashboard(QWidget *parent)
@@ -15,7 +16,6 @@ Dashboard::Dashboard(DbManager *db, QWidget *parent)
   this->loadInventoryTableFromDatabase();
   this->loadMemberPurchaseLog();
   this->membershipExpirationByMonth();
-  this->loadMemberConversions();
 }
 
 Dashboard::~Dashboard() {
@@ -55,7 +55,6 @@ void Dashboard::loadMembersTableFromDatabase() {
 }
 
 void Dashboard::prepInventoryTable() {
-
   // set column width
   for (int i = 0; i < 4; i++) {
     this->ui->InventoryListTable->setColumnWidth(i, 180);
@@ -72,12 +71,10 @@ void Dashboard::prepInventoryTable() {
 }
 
 QList<QList<QString>> Dashboard::getInventory() {
-
   QList<QList<QString>> inventory = this->database->getPurchases();
   QList<QList<QString>> combined;
 
   for (int i = 0; i < inventory.count(); i++) {
-
     int index = -1;
 
     // Search if the item was previously purchased
@@ -114,7 +111,6 @@ QList<QList<QString>> Dashboard::getInventory() {
 }
 
 void Dashboard::loadInventoryTableFromDatabase() {
-
   QList<QList<QString>> combined = getInventory();
   prepInventoryTable();
 
@@ -134,38 +130,27 @@ void Dashboard::loadInventoryTableFromDatabase() {
 }
 
 void Dashboard::loadMemberPurchaseLog() {
-
   QList<QList<QString>> inventory = this->database->getPurchases();
   QTableWidget *table = this->ui->MembershipInformationTable;
   double grandTotal = 0.0;
 
   for (int i = 0; i < table->rowCount(); i++) {
-
     QString memberNum = table->item(i, 1)->text();
     qDebug() << memberNum;
     double total = 0.0;
 
     for (int j = 0; j < inventory.count(); j++) {
       if (inventory.at(j).at(1) == memberNum) {
-        total +=
-            inventory.at(j).at(3).toDouble() * inventory.at(j).at(4).toInt();
+        total += inventory.at(j).at(3).toDouble() *
+                 inventory.at(j).at(4).toInt() * 1.775;
         grandTotal += inventory.at(j).at(3).toDouble() *
                       inventory.at(j).at(4).toInt() * 1.775;
       }
     }
 
     QTableWidgetItem *item = new QTableWidgetItem;
-    item->setText(QString::number(total * 1.775, 'f', 2));
+    item->setText(QString::number(total, 'f', 2));
     table->setItem(i, 4, item);
-
-    if (table->item(i, 2)->text() == "Executive") {
-
-      QTableWidgetItem *rebate = new QTableWidgetItem;
-      rebate->setText(QString::number(total * 0.02, 'f', 2));
-      table->setItem(i, 5, rebate);
-
-      qDebug() << total << " " << rebate->text();
-    }
   }
 
   this->ui->GrandTotal->setText("Grand Total: $" +
@@ -173,7 +158,6 @@ void Dashboard::loadMemberPurchaseLog() {
 }
 
 void Dashboard::searchForItem() {
-
   this->ui->name->setText("");
   this->ui->quantity->setText("");
   this->ui->revenue->setText("");
@@ -199,7 +183,6 @@ void Dashboard::searchForItem() {
 }
 
 void Dashboard::searchForMember() {
-
   this->ui->memberName->setText("");
   this->ui->purchases->setText("");
   this->ui->error->setText("");
@@ -223,7 +206,6 @@ void Dashboard::searchForMember() {
 }
 
 void Dashboard::membershipExpirationByMonth() {
-
   this->ui->expirationTable->setRowCount(0);
 
   // set column width
@@ -241,7 +223,6 @@ void Dashboard::membershipExpirationByMonth() {
     int memExpMon = expDate.month();
 
     if (expMonth == memExpMon) {
-
       table->insertRow(table->rowCount());
 
       QTableWidgetItem *memName = new QTableWidgetItem;
@@ -260,47 +241,6 @@ void Dashboard::membershipExpirationByMonth() {
   }
 }
 
-void Dashboard::loadMemberConversions() {
-
-  this->ui->regularTable->setRowCount(0);
-  this->ui->executiveTable->setRowCount(0);
-
-  // set column width
-  this->ui->regularTable->setColumnWidth(0, 256);
-  this->ui->executiveTable->setColumnWidth(0, 256);
-
-  QTableWidget *table = this->ui->MembershipInformationTable;
-  QTableWidget *exec = this->ui->executiveTable;
-  QTableWidget *reg = this->ui->regularTable;
-  int limit = 120 - 65;
-
-  for (int i = 0; i < table->rowCount(); i++) {
-
-    if (table->item(i, 2)->text() == "Executive") {
-      if (table->item(i, 5)->text().toDouble() < limit) {
-        exec->insertRow(exec->rowCount());
-        QTableWidgetItem *member = new QTableWidgetItem;
-        member->setText(table->item(i, 0)->text());
-        exec->setItem(exec->rowCount() - 1, 0, member);
-      }
-    } else {
-      if (table->item(i, 4)->text().toDouble() / 1.0775 * 0.02 > limit) {
-        reg->insertRow(reg->rowCount());
-        QTableWidgetItem *member = new QTableWidgetItem;
-        member->setText(table->item(i, 0)->text());
-        reg->setItem(reg->rowCount() - 1, 0, member);
-      }
-    }
-  }
-
-  qDebug() << "out of for loop";
-
-  this->ui->regular->setText("Total Regular Conversions: " +
-                             QString::number(reg->rowCount()));
-  this->ui->executive->setText("Total Executive Conversions: " +
-                               QString::number(exec->rowCount()));
-}
-
 void Dashboard::on_button_importMembersFromFileSelection_clicked() {
   this->database->importMembersFromFileSelection(this);
   loadMembersTableFromDatabase();
@@ -311,7 +251,6 @@ void Dashboard::on_button_importPurchasesFromFileSelection_clicked() {
   loadPurchasesTableFromDatabase();
   loadInventoryTableFromDatabase();
   loadMemberPurchaseLog();
-  // loadMemberConversions();
 }
 
 void Dashboard::on_button_createMember_clicked() {
@@ -326,6 +265,14 @@ void Dashboard::on_button_createMember_clicked() {
     this->ui->MembershipInformationTable->setRowCount(0);
     loadMembersTableFromDatabase();
     loadMemberPurchaseLog();
-    qDebug() << "Accepted dialog " << name << type << id << expDate;
+  }
+}
+
+void Dashboard::on_button_deleteMember_clicked() {
+  QTableWidget *table = this->ui->MembershipInformationTable;
+  const int currentRowIndex = table->currentRow();
+  const int memberId = table->item(currentRowIndex, 1)->text().toInt();
+  if (database->deleteMember(memberId)) {
+    table->removeRow(currentRowIndex);
   }
 }

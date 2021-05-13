@@ -129,6 +129,13 @@
                 </property>
                </widget>
               </item>
+              <item>
+               <widget class="QPushButton" name="button_deleteMember">
+                <property name="text">
+                 <string>Delete Member</string>
+                </property>
+               </widget>
+              </item>
              </layout>
             </item>
             <item>

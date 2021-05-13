@@ -31,6 +31,8 @@ private slots:
 
   void membershipExpirationByMonth();
 
+  void on_button_deleteMember_clicked();
+
 private:
   Ui::Dashboard *ui;
   CreateMemberDialog *createMemberDialog;

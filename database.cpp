@@ -165,9 +165,9 @@ QList<QList<QString>> DbManager::getMembers() {
   return ret;
 }
 
-bool DbManager::createMember(QString &customerName, int &customerMemberNumber,
-                             QString &customerMembershipType,
-                             QDate &customerMembershipExpiration) {
+bool DbManager::createMember(const QString &customerName, const int &customerMemberNumber,
+                             const QString &customerMembershipType,
+                             const QDate &customerMembershipExpiration) {
   QSqlQuery createMember;
   createMember.prepare(
       "INSERT INTO members (name, number, type, expirationDate) VALUES "
@@ -180,6 +180,13 @@ bool DbManager::createMember(QString &customerName, int &customerMemberNumber,
   qDebug() << customerName << customerMemberNumber << customerMembershipType
            << customerMembershipExpiration;
   return createMember.exec();
+}
+
+bool DbManager::deleteMember(const int &id) {
+  QSqlQuery deleteMember;
+  deleteMember.prepare("DELETE FROM members WHERE number=:number");
+  deleteMember.bindValue(":number", id);
+  return deleteMember.exec();
 }
 
 QList<QList<QString>> DbManager::getPurchases() {

@@ -75,7 +75,7 @@
        <item>
         <widget class="QTabWidget" name="tabWidget">
          <property name="currentIndex">
-          <number>0</number>
+          <number>6</number>
          </property>
          <widget class="QWidget" name="tab_membershipInformation">
           <property name="font">
@@ -126,13 +126,6 @@
                <widget class="QPushButton" name="button_createMember">
                 <property name="text">
                  <string>Create Member</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="button_deleteMember">
-                <property name="text">
-                 <string>Delete Member</string>
                 </property>
                </widget>
               </item>
@@ -718,6 +711,80 @@
            </property>
           </widget>
          </widget>
+         <widget class="QWidget" name="tab_3">
+          <attribute name="title">
+           <string>Conversions</string>
+          </attribute>
+          <widget class="QLabel" name="label_7">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>40</y>
+             <width>531</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Recommended Membership Conversions&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+          <widget class="QTableWidget" name="regularTable">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>120</y>
+             <width>256</width>
+             <height>192</height>
+            </rect>
+           </property>
+           <column>
+            <property name="text">
+             <string>Regular to Executive</string>
+            </property>
+           </column>
+          </widget>
+          <widget class="QTableWidget" name="executiveTable">
+           <property name="geometry">
+            <rect>
+             <x>430</x>
+             <y>120</y>
+             <width>256</width>
+             <height>192</height>
+            </rect>
+           </property>
+           <column>
+            <property name="text">
+             <string>Executive to Regular</string>
+            </property>
+           </column>
+          </widget>
+          <widget class="QLabel" name="regular">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>360</y>
+             <width>251</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="executive">
+           <property name="geometry">
+            <rect>
+             <x>430</x>
+             <y>360</y>
+             <width>261</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+         </widget>
         </widget>
        </item>
       </layout>
@@ -744,7 +811,7 @@
      <x>0</x>
      <y>0</y>
      <width>819</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCostco">

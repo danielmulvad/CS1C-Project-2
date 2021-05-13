@@ -5,6 +5,7 @@
 #include "database.h"
 #include <QMainWindow>
 #include <QString>
+#include <QDate>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -31,8 +32,6 @@ private slots:
 
   void membershipExpirationByMonth();
 
-  void on_button_deleteMember_clicked();
-
 private:
   Ui::Dashboard *ui;
   CreateMemberDialog *createMemberDialog;
@@ -46,5 +45,7 @@ private:
   QList<QList<QString>> getInventory();
 
   void loadMemberPurchaseLog();
+
+  void loadMemberConversions();
 };
 #endif // DASHBOARD_H

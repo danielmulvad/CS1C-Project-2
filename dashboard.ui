@@ -54,69 +54,13 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget_2">
+   <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>50</y>
       <width>781</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <property name="sizeConstraint">
-      <enum>QLayout::SetNoConstraint</enum>
-     </property>
-     <item>
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="button_importMembersFromFileSelection">
-       <property name="text">
-        <string>Import Members</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="button_importPurchasesFromFileSelection">
-       <property name="text">
-        <string>Import Purchases</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="button_createMember">
-       <property name="text">
-        <string>Create Member</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="button_saveAll">
-       <property name="text">
-        <string>Save All</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="verticalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>100</y>
-      <width>781</width>
-      <height>441</height>
+      <height>491</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -146,13 +90,47 @@
           <widget class="QWidget" name="verticalLayoutWidget_2">
            <property name="geometry">
             <rect>
-             <x>-10</x>
+             <x>0</x>
              <y>0</y>
-             <width>801</width>
-             <height>411</height>
+             <width>771</width>
+             <height>461</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <property name="sizeConstraint">
+               <enum>QLayout::SetNoConstraint</enum>
+              </property>
+              <item>
+               <spacer name="horizontalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="button_importMembersFromFileSelection">
+                <property name="text">
+                 <string>Import Members</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="button_createMember">
+                <property name="text">
+                 <string>Create Member</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_4">
               <property name="spacing">
@@ -222,13 +200,47 @@
           <widget class="QWidget" name="verticalLayoutWidget_5">
            <property name="geometry">
             <rect>
-             <x>-10</x>
+             <x>0</x>
              <y>0</y>
-             <width>801</width>
-             <height>411</height>
+             <width>771</width>
+             <height>461</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_9">
+              <property name="sizeConstraint">
+               <enum>QLayout::SetNoConstraint</enum>
+              </property>
+              <item>
+               <spacer name="horizontalSpacer_5">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="button_importPurchasesFromFileSelection">
+                <property name="text">
+                 <string>Import Purchases</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="button_createPurchase">
+                <property name="text">
+                 <string>Create Purchase</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_8">
               <property name="spacing">
@@ -293,10 +305,10 @@
           <widget class="QWidget" name="verticalLayoutWidget_6">
            <property name="geometry">
             <rect>
-             <x>-10</x>
+             <x>0</x>
              <y>0</y>
-             <width>801</width>
-             <height>411</height>
+             <width>771</width>
+             <height>461</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -671,7 +683,7 @@
              <x>20</x>
              <y>110</y>
              <width>731</width>
-             <height>281</height>
+             <height>341</height>
             </rect>
            </property>
            <column>

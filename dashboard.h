@@ -47,5 +47,7 @@ private:
   QList<QList<QString>> getInventory();
 
   void loadMemberPurchaseLog();
+
+  void loadMemberConversions();
 };
 #endif // DASHBOARD_H

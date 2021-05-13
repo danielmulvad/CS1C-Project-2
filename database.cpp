@@ -165,7 +165,8 @@ QList<QList<QString>> DbManager::getMembers() {
   return ret;
 }
 
-bool DbManager::createMember(const QString &customerName, const int &customerMemberNumber,
+bool DbManager::createMember(const QString &customerName,
+                             const int &customerMemberNumber,
                              const QString &customerMembershipType,
                              const QDate &customerMembershipExpiration) {
   QSqlQuery createMember;

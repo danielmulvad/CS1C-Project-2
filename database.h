@@ -17,7 +17,8 @@ public:
   QList<QList<QString>> getPurchases();
   void importMembersFromFileSelection(QWidget *widget);
   void importPurchasesFromFileSelection(QWidget *widget);
-  bool createMember(const QString &name, const int &id, const QString &type, const QDate &expDate);
+  bool createMember(const QString &name, const int &id, const QString &type,
+                    const QDate &expDate);
   bool deleteMember(const int &id);
 
 private:

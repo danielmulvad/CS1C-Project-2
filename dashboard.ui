@@ -1,911 +1,855 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-  <class>Dashboard</class>
-  <widget class="QMainWindow" name="Dashboard">
+ <class>Dashboard</class>
+ <widget class="QMainWindow" name="Dashboard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>819</width>
+    <height>627</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>819</width>
-        <height>627</height>
-      </rect>
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>781</width>
+      <height>51</height>
+     </rect>
     </property>
-    <property name="windowTitle">
-      <string>MainWindow</string>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetNoConstraint</enum>
+     </property>
+     <item>
+      <widget class="QLabel" name="welcomeLabel">
+       <property name="font">
+        <font>
+         <pointsize>20</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Welcome to the Costco+ Page</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>781</width>
+      <height>491</height>
+     </rect>
     </property>
-    <widget class="QWidget" name="centralwidget">
-      <widget class="QWidget" name="horizontalLayoutWidget">
-        <property name="geometry">
-          <rect>
-            <x>10</x>
-            <y>0</y>
-            <width>781</width>
-            <height>51</height>
-          </rect>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-          <property name="sizeConstraint">
-            <enum>QLayout::SetNoConstraint</enum>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetNoConstraint</enum>
+     </property>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetNoConstraint</enum>
+       </property>
+       <item>
+        <widget class="QTabWidget" name="tabWidget">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="tab_membershipInformation">
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
           </property>
-          <item>
-            <widget class="QLabel" name="welcomeLabel">
-              <property name="font">
-                <font>
-                  <pointsize>20</pointsize>
-                </font>
-              </property>
-              <property name="text">
-                <string>Welcome to the Costco+ Page</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <spacer name="horizontalSpacer">
-              <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-                <size>
-                  <width>40</width>
-                  <height>20</height>
-                </size>
-              </property>
-            </spacer>
-          </item>
-        </layout>
-      </widget>
-      <widget class="QWidget" name="horizontalLayoutWidget_2">
-        <property name="geometry">
-          <rect>
-            <x>10</x>
-            <y>50</y>
-            <width>781</width>
-            <height>51</height>
-          </rect>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <property name="sizeConstraint">
-            <enum>QLayout::SetNoConstraint</enum>
-          </property>
-          <item>
-            <spacer name="horizontalSpacer_2">
-              <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-                <size>
-                  <width>40</width>
-                  <height>20</height>
-                </size>
-              </property>
-            </spacer>
-          </item>
-          <item>
-            <widget class="QPushButton" name="button_importMembersFromFileSelection">
-              <property name="text">
-                <string>Import Members</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QPushButton" name="button_importPurchasesFromFileSelection">
-              <property name="text">
-                <string>Import Purchases</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QPushButton" name="button_createMember">
-              <property name="text">
-                <string>Create Member</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QPushButton" name="button_saveAll">
-              <property name="text">
-                <string>Save All</string>
-              </property>
-            </widget>
-          </item>
-        </layout>
-      </widget>
-      <widget class="QWidget" name="verticalLayoutWidget">
-        <property name="geometry">
-          <rect>
-            <x>10</x>
-            <y>100</y>
-            <width>781</width>
-            <height>441</height>
-          </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout">
-          <property name="sizeConstraint">
-            <enum>QLayout::SetNoConstraint</enum>
-          </property>
-          <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <attribute name="title">
+           <string>Membership Information</string>
+          </attribute>
+          <widget class="QWidget" name="verticalLayoutWidget_2">
+           <property name="geometry">
+            <rect>
+             <x>-10</x>
+             <y>0</y>
+             <width>801</width>
+             <height>411</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
               <property name="sizeConstraint">
-                <enum>QLayout::SetNoConstraint</enum>
+               <enum>QLayout::SetNoConstraint</enum>
               </property>
               <item>
-                <widget class="QTabWidget" name="tabWidget">
-                  <property name="currentIndex">
-                    <number>6</number>
-                  </property>
-                  <widget class="QWidget" name="tab_membershipInformation">
-                    <property name="font">
-                      <font>
-                        <weight>50</weight>
-                        <bold>false</bold>
-                      </font>
-                    </property>
-                    <attribute name="title">
-                      <string>Membership Information</string>
-                    </attribute>
-                    <widget class="QWidget" name="verticalLayoutWidget_2">
-                      <property name="geometry">
-                        <rect>
-                          <x>-10</x>
-                          <y>0</y>
-                          <width>801</width>
-                          <height>411</height>
-                        </rect>
-                      </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_2">
-                        <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_7">
-                            <property name="sizeConstraint">
-                              <enum>QLayout::SetNoConstraint</enum>
-                            </property>
-                            <item>
-                              <spacer name="horizontalSpacer_2">
-                                <property name="orientation">
-                                  <enum>Qt::Horizontal</enum>
-                                </property>
-                                <property name="sizeHint" stdset="0">
-                                  <size>
-                                    <width>40</width>
-                                    <height>20</height>
-                                  </size>
-                                </property>
-                              </spacer>
-                            </item>
-                            <item>
-                              <widget class="QPushButton" name="button_importMembersFromFileSelection">
-                                <property name="text">
-                                  <string>Import Members</string>
-                                </property>
-                              </widget>
-                            </item>
-                            <item>
-                              <widget class="QPushButton" name="button_createMember">
-                                <property name="text">
-                                  <string>Create Member</string>
-                                </property>
-                              </widget>
-                            </item>
-                            <item>
-                              <widget class="QPushButton" name="button_deleteMember">
-                                <property name="text">
-                                  <string>Delete Member</string>
-                                </property>
-                              </widget>
-                            </item>
-                          </layout>
-                        </item>
-                        <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_4">
-                            <property name="spacing">
-                              <number>6</number>
-                            </property>
-                            <property name="leftMargin">
-                              <number>16</number>
-                            </property>
-                            <property name="rightMargin">
-                              <number>16</number>
-                            </property>
-                            <item>
-                              <widget class="QTableWidget" name="MembershipInformationTable">
-                                <property name="sortingEnabled">
-                                  <bool>true</bool>
-                                </property>
-                                <attribute name="horizontalHeaderCascadingSectionResizes">
-                                  <bool>true</bool>
-                                </attribute>
-                                <attribute name="horizontalHeaderDefaultSectionSize">
-                                  <number>125</number>
-                                </attribute>
-                                <attribute name="horizontalHeaderStretchLastSection">
-                                  <bool>false</bool>
-                                </attribute>
-                                <column>
-                                  <property name="text">
-                                    <string>Member Name</string>
-                                  </property>
-                                </column>
-                                <column>
-                                  <property name="text">
-                                    <string>Membership Number</string>
-                                  </property>
-                                </column>
-                                <column>
-                                  <property name="text">
-                                    <string>Membership Type</string>
-                                  </property>
-                                </column>
-                                <column>
-                                  <property name="text">
-                                    <string>Expiration Date</string>
-                                  </property>
-                                </column>
-                                <column>
-                                  <property name="text">
-                                    <string>Total Amount Spent</string>
-                                  </property>
-                                </column>
-                                <column>
-                                  <property name="text">
-                                    <string>Rebate Amount</string>
-                                  </property>
-                                </column>
-                              </widget>
-                            </item>
-                          </layout>
-                        </item>
-                      </layout>
-                    </widget>
-                  </widget>
-                  <widget class="QWidget" name="tab_salesReport">
-                    <attribute name="title">
-                      <string>Sales Report</string>
-                    </attribute>
-                    <widget class="QWidget" name="verticalLayoutWidget_5">
-                      <property name="geometry">
-                        <rect>
-                          <x>-10</x>
-                          <y>0</y>
-                          <width>801</width>
-                          <height>411</height>
-                        </rect>
-                      </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_5">
-                        <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_8">
-                            <property name="spacing">
-                              <number>6</number>
-                            </property>
-                            <property name="leftMargin">
-                              <number>16</number>
-                            </property>
-                            <property name="rightMargin">
-                              <number>16</number>
-                            </property>
-                            <item>
-                              <widget class="QTableWidget" name="SalesReportTable">
-                                <property name="sortingEnabled">
-                                  <bool>true</bool>
-                                </property>
-                                <attribute name="horizontalHeaderCascadingSectionResizes">
-                                  <bool>true</bool>
-                                </attribute>
-                                <attribute name="horizontalHeaderDefaultSectionSize">
-                                  <number>150</number>
-                                </attribute>
-                                <attribute name="horizontalHeaderStretchLastSection">
-                                  <bool>false</bool>
-                                </attribute>
-                                <column>
-                                  <property name="text">
-                                    <string>Purchase Date</string>
-                                  </property>
-                                </column>
-                                <column>
-                                  <property name="text">
-                                    <string>Membership Number</string>
-                                  </property>
-                                </column>
-                                <column>
-                                  <property name="text">
-                                    <string>Item Purchased</string>
-                                  </property>
-                                </column>
-                                <column>
-                                  <property name="text">
-                                    <string>Sales Price</string>
-                                  </property>
-                                </column>
-                                <column>
-                                  <property name="text">
-                                    <string>Quantity Purchased</string>
-                                  </property>
-                                </column>
-                              </widget>
-                            </item>
-                          </layout>
-                        </item>
-                      </layout>
-                    </widget>
-                  </widget>
-                  <widget class="QWidget" name="tab_inventoryList">
-                    <attribute name="title">
-                      <string>Inventory List</string>
-                    </attribute>
-                    <widget class="QWidget" name="verticalLayoutWidget_6">
-                      <property name="geometry">
-                        <rect>
-                          <x>-10</x>
-                          <y>0</y>
-                          <width>801</width>
-                          <height>411</height>
-                        </rect>
-                      </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_6">
-                        <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_10">
-                            <property name="spacing">
-                              <number>6</number>
-                            </property>
-                            <property name="leftMargin">
-                              <number>16</number>
-                            </property>
-                            <property name="rightMargin">
-                              <number>16</number>
-                            </property>
-                            <item>
-                              <widget class="QTableWidget" name="InventoryListTable">
-                                <property name="sortingEnabled">
-                                  <bool>true</bool>
-                                </property>
-                                <attribute name="horizontalHeaderCascadingSectionResizes">
-                                  <bool>true</bool>
-                                </attribute>
-                                <attribute name="horizontalHeaderDefaultSectionSize">
-                                  <number>150</number>
-                                </attribute>
-                                <attribute name="horizontalHeaderStretchLastSection">
-                                  <bool>false</bool>
-                                </attribute>
-                                <column>
-                                  <property name="text">
-                                    <string>Item Name</string>
-                                  </property>
-                                </column>
-                                <column>
-                                  <property name="text">
-                                    <string>Item Price</string>
-                                  </property>
-                                </column>
-                                <column>
-                                  <property name="text">
-                                    <string>Quantity Sold</string>
-                                  </property>
-                                </column>
-                                <column>
-                                  <property name="text">
-                                    <string>Total Revenue</string>
-                                  </property>
-                                </column>
-                              </widget>
-                            </item>
-                          </layout>
-                        </item>
-                      </layout>
-                    </widget>
-                  </widget>
-                  <widget class="QWidget" name="tab">
-                    <attribute name="title">
-                      <string>Search Item</string>
-                    </attribute>
-                    <widget class="QLabel" name="label">
-                      <property name="geometry">
-                        <rect>
-                          <x>30</x>
-                          <y>20</y>
-                          <width>101</width>
-                          <height>31</height>
-                        </rect>
-                      </property>
-                      <property name="text">
-                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Item&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                      </property>
-                    </widget>
-                    <widget class="QLabel" name="label_2">
-                      <property name="geometry">
-                        <rect>
-                          <x>30</x>
-                          <y>70</y>
-                          <width>111</width>
-                          <height>16</height>
-                        </rect>
-                      </property>
-                      <property name="text">
-                        <string>Enter Item Name:</string>
-                      </property>
-                    </widget>
-                    <widget class="QLineEdit" name="item">
-                      <property name="geometry">
-                        <rect>
-                          <x>140</x>
-                          <y>70</y>
-                          <width>113</width>
-                          <height>20</height>
-                        </rect>
-                      </property>
-                    </widget>
-                    <widget class="QPushButton" name="pushButton">
-                      <property name="geometry">
-                        <rect>
-                          <x>260</x>
-                          <y>65</y>
-                          <width>75</width>
-                          <height>31</height>
-                        </rect>
-                      </property>
-                      <property name="text">
-                        <string>Search</string>
-                      </property>
-                    </widget>
-                    <widget class="QLabel" name="name">
-                      <property name="geometry">
-                        <rect>
-                          <x>420</x>
-                          <y>50</y>
-                          <width>201</width>
-                          <height>21</height>
-                        </rect>
-                      </property>
-                      <property name="font">
-                        <font>
-                          <pointsize>12</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                        </font>
-                      </property>
-                      <property name="text">
-                        <string/>
-                      </property>
-                    </widget>
-                    <widget class="QLabel" name="quantity">
-                      <property name="geometry">
-                        <rect>
-                          <x>420</x>
-                          <y>70</y>
-                          <width>201</width>
-                          <height>16</height>
-                        </rect>
-                      </property>
-                      <property name="text">
-                        <string/>
-                      </property>
-                    </widget>
-                    <widget class="QLabel" name="revenue">
-                      <property name="geometry">
-                        <rect>
-                          <x>420</x>
-                          <y>90</y>
-                          <width>201</width>
-                          <height>16</height>
-                        </rect>
-                      </property>
-                      <property name="text">
-                        <string/>
-                      </property>
-                    </widget>
-                    <widget class="QLabel" name="errorMessage">
-                      <property name="geometry">
-                        <rect>
-                          <x>380</x>
-                          <y>70</y>
-                          <width>341</width>
-                          <height>16</height>
-                        </rect>
-                      </property>
-                      <property name="text">
-                        <string/>
-                      </property>
-                    </widget>
-                  </widget>
-                  <widget class="QWidget" name="tab_2">
-                    <attribute name="title">
-                      <string>Search Member</string>
-                    </attribute>
-                    <widget class="QLabel" name="label_3">
-                      <property name="geometry">
-                        <rect>
-                          <x>20</x>
-                          <y>20</y>
-                          <width>101</width>
-                          <height>31</height>
-                        </rect>
-                      </property>
-                      <property name="text">
-                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Member&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                      </property>
-                    </widget>
-                    <widget class="QLabel" name="label_4">
-                      <property name="geometry">
-                        <rect>
-                          <x>20</x>
-                          <y>70</y>
-                          <width>161</width>
-                          <height>16</height>
-                        </rect>
-                      </property>
-                      <property name="text">
-                        <string>Enter Member Name or ID:</string>
-                      </property>
-                    </widget>
-                    <widget class="QLineEdit" name="member">
-                      <property name="geometry">
-                        <rect>
-                          <x>190</x>
-                          <y>70</y>
-                          <width>113</width>
-                          <height>20</height>
-                        </rect>
-                      </property>
-                    </widget>
-                    <widget class="QPushButton" name="search">
-                      <property name="geometry">
-                        <rect>
-                          <x>310</x>
-                          <y>65</y>
-                          <width>75</width>
-                          <height>30</height>
-                        </rect>
-                      </property>
-                      <property name="text">
-                        <string>Search</string>
-                      </property>
-                    </widget>
-                    <widget class="QLabel" name="error">
-                      <property name="geometry">
-                        <rect>
-                          <x>440</x>
-                          <y>70</y>
-                          <width>261</width>
-                          <height>16</height>
-                        </rect>
-                      </property>
-                      <property name="text">
-                        <string/>
-                      </property>
-                    </widget>
-                    <widget class="QLabel" name="memberName">
-                      <property name="geometry">
-                        <rect>
-                          <x>480</x>
-                          <y>60</y>
-                          <width>221</width>
-                          <height>21</height>
-                        </rect>
-                      </property>
-                      <property name="font">
-                        <font>
-                          <pointsize>12</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                        </font>
-                      </property>
-                      <property name="text">
-                        <string/>
-                      </property>
-                    </widget>
-                    <widget class="QLabel" name="purchases">
-                      <property name="geometry">
-                        <rect>
-                          <x>480</x>
-                          <y>80</y>
-                          <width>251</width>
-                          <height>16</height>
-                        </rect>
-                      </property>
-                      <property name="text">
-                        <string/>
-                      </property>
-                    </widget>
-                  </widget>
-                  <widget class="QWidget" name="tab_Expiration">
-                    <attribute name="title">
-                      <string>Expiration Date</string>
-                    </attribute>
-                    <widget class="QComboBox" name="months">
-                      <property name="geometry">
-                        <rect>
-                          <x>550</x>
-                          <y>30</y>
-                          <width>191</width>
-                          <height>21</height>
-                        </rect>
-                      </property>
-                      <item>
-                        <property name="text">
-                          <string>January</string>
-                        </property>
-                      </item>
-                      <item>
-                        <property name="text">
-                          <string>February</string>
-                        </property>
-                      </item>
-                      <item>
-                        <property name="text">
-                          <string>March</string>
-                        </property>
-                      </item>
-                      <item>
-                        <property name="text">
-                          <string>April</string>
-                        </property>
-                      </item>
-                      <item>
-                        <property name="text">
-                          <string>May</string>
-                        </property>
-                      </item>
-                      <item>
-                        <property name="text">
-                          <string>June</string>
-                        </property>
-                      </item>
-                      <item>
-                        <property name="text">
-                          <string>July</string>
-                        </property>
-                      </item>
-                      <item>
-                        <property name="text">
-                          <string>August</string>
-                        </property>
-                      </item>
-                      <item>
-                        <property name="text">
-                          <string>September</string>
-                        </property>
-                      </item>
-                      <item>
-                        <property name="text">
-                          <string>October</string>
-                        </property>
-                      </item>
-                      <item>
-                        <property name="text">
-                          <string>November</string>
-                        </property>
-                      </item>
-                      <item>
-                        <property name="text">
-                          <string>December</string>
-                        </property>
-                      </item>
-                    </widget>
-                    <widget class="QLabel" name="label_5">
-                      <property name="geometry">
-                        <rect>
-                          <x>550</x>
-                          <y>10</y>
-                          <width>171</width>
-                          <height>16</height>
-                        </rect>
-                      </property>
-                      <property name="text">
-                        <string>Select a Month</string>
-                      </property>
-                    </widget>
-                    <widget class="QPushButton" name="pushButton_2">
-                      <property name="geometry">
-                        <rect>
-                          <x>674</x>
-                          <y>60</y>
-                          <width>81</width>
-                          <height>31</height>
-                        </rect>
-                      </property>
-                      <property name="text">
-                        <string>Search</string>
-                      </property>
-                    </widget>
-                    <widget class="QTableWidget" name="expirationTable">
-                      <property name="geometry">
-                        <rect>
-                          <x>20</x>
-                          <y>110</y>
-                          <width>731</width>
-                          <height>281</height>
-                        </rect>
-                      </property>
-                      <column>
-                        <property name="text">
-                          <string>Name</string>
-                        </property>
-                      </column>
-                      <column>
-                        <property name="text">
-                          <string>Cost to Renew</string>
-                        </property>
-                      </column>
-                    </widget>
-                    <widget class="QLabel" name="label_6">
-                      <property name="geometry">
-                        <rect>
-                          <x>20</x>
-                          <y>30</y>
-                          <width>451</width>
-                          <height>51</height>
-                        </rect>
-                      </property>
-                      <property name="text">
-                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Membership Expirations by Month&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                      </property>
-                    </widget>
-                  </widget>
-                  <widget class="QWidget" name="tab_3">
-                    <attribute name="title">
-                      <string>Conversions</string>
-                    </attribute>
-                    <widget class="QLabel" name="label_7">
-                      <property name="geometry">
-                        <rect>
-                          <x>40</x>
-                          <y>40</y>
-                          <width>531</width>
-                          <height>41</height>
-                        </rect>
-                      </property>
-                      <property name="text">
-                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Recommended Membership Conversions&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                      </property>
-                    </widget>
-                    <widget class="QTableWidget" name="regularTable">
-                      <property name="geometry">
-                        <rect>
-                          <x>40</x>
-                          <y>120</y>
-                          <width>256</width>
-                          <height>192</height>
-                        </rect>
-                      </property>
-                      <column>
-                        <property name="text">
-                          <string>Regular to Executive</string>
-                        </property>
-                      </column>
-                    </widget>
-                    <widget class="QTableWidget" name="executiveTable">
-                      <property name="geometry">
-                        <rect>
-                          <x>430</x>
-                          <y>120</y>
-                          <width>256</width>
-                          <height>192</height>
-                        </rect>
-                      </property>
-                      <column>
-                        <property name="text">
-                          <string>Executive to Regular</string>
-                        </property>
-                      </column>
-                    </widget>
-                    <widget class="QLabel" name="regular">
-                      <property name="geometry">
-                        <rect>
-                          <x>40</x>
-                          <y>360</y>
-                          <width>251</width>
-                          <height>16</height>
-                        </rect>
-                      </property>
-                      <property name="text">
-                        <string>TextLabel</string>
-                      </property>
-                    </widget>
-                    <widget class="QLabel" name="executive">
-                      <property name="geometry">
-                        <rect>
-                          <x>430</x>
-                          <y>360</y>
-                          <width>261</width>
-                          <height>16</height>
-                        </rect>
-                      </property>
-                      <property name="text">
-                        <string>TextLabel</string>
-                      </property>
-                    </widget>
-                  </widget>
-                </widget>
+               <spacer name="horizontalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
-            </layout>
-          </item>
-        </layout>
-      </widget>
-      <widget class="QLabel" name="GrandTotal">
-        <property name="geometry">
-          <rect>
-            <x>620</x>
-            <y>560</y>
-            <width>221</width>
-            <height>16</height>
-          </rect>
-        </property>
-        <property name="text">
-          <string>Grand Sales Total: $0.00</string>
-        </property>
-      </widget>
-    </widget>
-    <widget class="QMenuBar" name="menubar">
-      <property name="geometry">
-        <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>819</width>
-          <height>21</height>
-        </rect>
-      </property>
-      <widget class="QMenu" name="menuCostco">
-        <property name="title">
-          <string>Costco+</string>
-        </property>
-      </widget>
-      <addaction name="menuCostco"/>
-    </widget>
-    <widget class="QStatusBar" name="statusbar"/>
+              <item>
+               <widget class="QPushButton" name="button_importMembersFromFileSelection">
+                <property name="text">
+                 <string>Import Members</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="button_createMember">
+                <property name="text">
+                 <string>Create Member</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="button_deleteMember">
+                <property name="text">
+                 <string>Delete Member</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <property name="spacing">
+               <number>6</number>
+              </property>
+              <property name="leftMargin">
+               <number>16</number>
+              </property>
+              <property name="rightMargin">
+               <number>16</number>
+              </property>
+              <item>
+               <widget class="QTableWidget" name="MembershipInformationTable">
+                <property name="sortingEnabled">
+                 <bool>true</bool>
+                </property>
+                <attribute name="horizontalHeaderCascadingSectionResizes">
+                 <bool>true</bool>
+                </attribute>
+                <attribute name="horizontalHeaderDefaultSectionSize">
+                 <number>125</number>
+                </attribute>
+                <attribute name="horizontalHeaderStretchLastSection">
+                 <bool>false</bool>
+                </attribute>
+                <column>
+                 <property name="text">
+                  <string>Member Name</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Membership Number</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Membership Type</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Expiration Date</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Total Amount Spent</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Rebate Amount</string>
+                 </property>
+                </column>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="tab_salesReport">
+          <attribute name="title">
+           <string>Sales Report</string>
+          </attribute>
+          <widget class="QWidget" name="verticalLayoutWidget_5">
+           <property name="geometry">
+            <rect>
+             <x>-10</x>
+             <y>0</y>
+             <width>801</width>
+             <height>411</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_8">
+              <property name="spacing">
+               <number>6</number>
+              </property>
+              <property name="leftMargin">
+               <number>16</number>
+              </property>
+              <property name="rightMargin">
+               <number>16</number>
+              </property>
+              <item>
+               <widget class="QTableWidget" name="SalesReportTable">
+                <property name="sortingEnabled">
+                 <bool>true</bool>
+                </property>
+                <attribute name="horizontalHeaderCascadingSectionResizes">
+                 <bool>true</bool>
+                </attribute>
+                <attribute name="horizontalHeaderDefaultSectionSize">
+                 <number>150</number>
+                </attribute>
+                <attribute name="horizontalHeaderStretchLastSection">
+                 <bool>false</bool>
+                </attribute>
+                <column>
+                 <property name="text">
+                  <string>Purchase Date</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Membership Number</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Item Purchased</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Sales Price</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Quantity Purchased</string>
+                 </property>
+                </column>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="tab_inventoryList">
+          <attribute name="title">
+           <string>Inventory List</string>
+          </attribute>
+          <widget class="QWidget" name="verticalLayoutWidget_6">
+           <property name="geometry">
+            <rect>
+             <x>-10</x>
+             <y>0</y>
+             <width>801</width>
+             <height>411</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_10">
+              <property name="spacing">
+               <number>6</number>
+              </property>
+              <property name="leftMargin">
+               <number>16</number>
+              </property>
+              <property name="rightMargin">
+               <number>16</number>
+              </property>
+              <item>
+               <widget class="QTableWidget" name="InventoryListTable">
+                <property name="sortingEnabled">
+                 <bool>true</bool>
+                </property>
+                <attribute name="horizontalHeaderCascadingSectionResizes">
+                 <bool>true</bool>
+                </attribute>
+                <attribute name="horizontalHeaderDefaultSectionSize">
+                 <number>150</number>
+                </attribute>
+                <attribute name="horizontalHeaderStretchLastSection">
+                 <bool>false</bool>
+                </attribute>
+                <column>
+                 <property name="text">
+                  <string>Item Name</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Item Price</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Quantity Sold</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Total Revenue</string>
+                 </property>
+                </column>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="tab">
+          <attribute name="title">
+           <string>Search Item</string>
+          </attribute>
+          <widget class="QLabel" name="label">
+           <property name="geometry">
+            <rect>
+             <x>30</x>
+             <y>20</y>
+             <width>101</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Item&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_2">
+           <property name="geometry">
+            <rect>
+             <x>30</x>
+             <y>70</y>
+             <width>111</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Enter Item Name:</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="item">
+           <property name="geometry">
+            <rect>
+             <x>140</x>
+             <y>70</y>
+             <width>113</width>
+             <height>20</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton">
+           <property name="geometry">
+            <rect>
+             <x>260</x>
+             <y>65</y>
+             <width>75</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Search</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="name">
+           <property name="geometry">
+            <rect>
+             <x>420</x>
+             <y>50</y>
+             <width>201</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QLabel" name="quantity">
+           <property name="geometry">
+            <rect>
+             <x>420</x>
+             <y>70</y>
+             <width>201</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QLabel" name="revenue">
+           <property name="geometry">
+            <rect>
+             <x>420</x>
+             <y>90</y>
+             <width>201</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QLabel" name="errorMessage">
+           <property name="geometry">
+            <rect>
+             <x>380</x>
+             <y>70</y>
+             <width>341</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="tab_2">
+          <attribute name="title">
+           <string>Search Member</string>
+          </attribute>
+          <widget class="QLabel" name="label_3">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>20</y>
+             <width>101</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Member&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_4">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>70</y>
+             <width>161</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Enter Member Name or ID:</string>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="member">
+           <property name="geometry">
+            <rect>
+             <x>190</x>
+             <y>70</y>
+             <width>113</width>
+             <height>20</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="search">
+           <property name="geometry">
+            <rect>
+             <x>310</x>
+             <y>65</y>
+             <width>75</width>
+             <height>30</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Search</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="error">
+           <property name="geometry">
+            <rect>
+             <x>440</x>
+             <y>70</y>
+             <width>261</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QLabel" name="memberName">
+           <property name="geometry">
+            <rect>
+             <x>480</x>
+             <y>60</y>
+             <width>221</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QLabel" name="purchases">
+           <property name="geometry">
+            <rect>
+             <x>480</x>
+             <y>80</y>
+             <width>251</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="tab_Expiration">
+          <attribute name="title">
+           <string>Expiration Date</string>
+          </attribute>
+          <widget class="QComboBox" name="months">
+           <property name="geometry">
+            <rect>
+             <x>550</x>
+             <y>30</y>
+             <width>191</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <item>
+            <property name="text">
+             <string>January</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>February</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>March</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>April</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>May</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>June</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>July</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>August</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>September</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>October</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>November</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>December</string>
+            </property>
+           </item>
+          </widget>
+          <widget class="QLabel" name="label_5">
+           <property name="geometry">
+            <rect>
+             <x>550</x>
+             <y>10</y>
+             <width>171</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Select a Month</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_2">
+           <property name="geometry">
+            <rect>
+             <x>674</x>
+             <y>60</y>
+             <width>81</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Search</string>
+           </property>
+          </widget>
+          <widget class="QTableWidget" name="expirationTable">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>110</y>
+             <width>731</width>
+             <height>281</height>
+            </rect>
+           </property>
+           <column>
+            <property name="text">
+             <string>Name</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Cost to Renew</string>
+            </property>
+           </column>
+          </widget>
+          <widget class="QLabel" name="label_6">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>30</y>
+             <width>451</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Membership Expirations by Month&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="tab_3">
+          <attribute name="title">
+           <string>Conversions</string>
+          </attribute>
+          <widget class="QLabel" name="label_7">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>40</y>
+             <width>531</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Recommended Membership Conversions&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+          <widget class="QTableWidget" name="regularTable">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>120</y>
+             <width>256</width>
+             <height>192</height>
+            </rect>
+           </property>
+           <column>
+            <property name="text">
+             <string>Regular to Executive</string>
+            </property>
+           </column>
+          </widget>
+          <widget class="QTableWidget" name="executiveTable">
+           <property name="geometry">
+            <rect>
+             <x>430</x>
+             <y>120</y>
+             <width>256</width>
+             <height>192</height>
+            </rect>
+           </property>
+           <column>
+            <property name="text">
+             <string>Executive to Regular</string>
+            </property>
+           </column>
+          </widget>
+          <widget class="QLabel" name="regular">
+           <property name="geometry">
+            <rect>
+             <x>40</x>
+             <y>360</y>
+             <width>251</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="executive">
+           <property name="geometry">
+            <rect>
+             <x>430</x>
+             <y>360</y>
+             <width>261</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="GrandTotal">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>560</y>
+      <width>221</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Grand Sales Total: $0.00</string>
+    </property>
+   </widget>
   </widget>
-  <resources/>
-  <connections>
-    <connection>
-      <sender>pushButton_2</sender>
-      <signal>clicked()</signal>
-      <receiver>Dashboard</receiver>
-      <slot>membershipExpirationByMonth()</slot>
-      <hints>
-        <hint type="sourcelabel">
-          <x>728</x>
-          <y>221</y>
-        </hint>
-        <hint type="destinationlabel">
-          <x>939</x>
-          <y>532</y>
-        </hint>
-      </hints>
-    </connection>
-    <connection>
-      <sender>search</sender>
-      <signal>clicked()</signal>
-      <receiver>Dashboard</receiver>
-      <slot>searchForMember()</slot>
-      <hints>
-        <hint type="sourcelabel">
-          <x>388</x>
-          <y>237</y>
-        </hint>
-        <hint type="destinationlabel">
-          <x>800</x>
-          <y>237</y>
-        </hint>
-      </hints>
-    </connection>
-    <connection>
-      <sender>pushButton</sender>
-      <signal>clicked()</signal>
-      <receiver>Dashboard</receiver>
-      <slot>searchForItem()</slot>
-      <hints>
-        <hint type="sourcelabel">
-          <x>338</x>
-          <y>237</y>
-        </hint>
-        <hint type="destinationlabel">
-          <x>432</x>
-          <y>573</y>
-        </hint>
-      </hints>
-    </connection>
-  </connections>
-  <slots>
-    <slot>searchForItem()</slot>
-    <slot>searchForMember()</slot>
-    <slot>membershipExpirationByMonth()</slot>
-  </slots>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>819</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuCostco">
+    <property name="title">
+     <string>Costco+</string>
+    </property>
+   </widget>
+   <addaction name="menuCostco"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>Dashboard</receiver>
+   <slot>membershipExpirationByMonth()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>728</x>
+     <y>221</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>939</x>
+     <y>532</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>search</sender>
+   <signal>clicked()</signal>
+   <receiver>Dashboard</receiver>
+   <slot>searchForMember()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>388</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>800</x>
+     <y>237</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Dashboard</receiver>
+   <slot>searchForItem()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>338</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>432</x>
+     <y>573</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>searchForItem()</slot>
+  <slot>searchForMember()</slot>
+  <slot>membershipExpirationByMonth()</slot>
+ </slots>
 </ui>

@@ -90,10 +90,10 @@
           <widget class="QWidget" name="verticalLayoutWidget_2">
            <property name="geometry">
             <rect>
-             <x>-10</x>
+             <x>0</x>
              <y>0</y>
-             <width>801</width>
-             <height>411</height>
+             <width>771</width>
+             <height>461</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -207,10 +207,10 @@
           <widget class="QWidget" name="verticalLayoutWidget_5">
            <property name="geometry">
             <rect>
-             <x>-10</x>
+             <x>0</x>
              <y>0</y>
-             <width>801</width>
-             <height>411</height>
+             <width>771</width>
+             <height>461</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -278,10 +278,10 @@
           <widget class="QWidget" name="verticalLayoutWidget_6">
            <property name="geometry">
             <rect>
-             <x>-10</x>
+             <x>0</x>
              <y>0</y>
-             <width>801</width>
-             <height>411</height>
+             <width>771</width>
+             <height>461</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -653,10 +653,10 @@
           <widget class="QTableWidget" name="expirationTable">
            <property name="geometry">
             <rect>
-             <x>20</x>
-             <y>110</y>
-             <width>731</width>
-             <height>281</height>
+             <x>0</x>
+             <y>100</y>
+             <width>771</width>
+             <height>361</height>
             </rect>
            </property>
            <column>

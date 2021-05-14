@@ -16,7 +16,6 @@ Dashboard::Dashboard(DbManager *db, QWidget *parent)
   this->loadMembersTableFromDatabase();
   this->loadPurchasesTableFromDatabase();
   this->loadInventoryTableFromDatabase();
-  this->loadMemberPurchaseLog();
   this->membershipExpirationByMonth();
   this->loadMemberConversions();
 }
@@ -30,6 +29,7 @@ Dashboard::~Dashboard() {
 void Dashboard::loadPurchasesTableFromDatabase() {
   const int purchasesColumnsToRead = 5;
   QTableWidget *table = this->ui->SalesReportTable;
+  table->setRowCount(0);
   QList<QList<QString>> purchases = this->database->getPurchases();
   for (int i = 0; i < purchases.count(); i++) {
     table->insertRow(i);
@@ -45,6 +45,7 @@ void Dashboard::loadPurchasesTableFromDatabase() {
 void Dashboard::loadMembersTableFromDatabase() {
   const int membersColumnsToRead = 4;
   QTableWidget *table = this->ui->MembershipInformationTable;
+  table->setRowCount(0);
   QList<QList<QString>> members = this->database->getMembers();
   for (int i = 0; i < members.count(); i++) {
     table->insertRow(i);
@@ -54,6 +55,7 @@ void Dashboard::loadMembersTableFromDatabase() {
       table->setItem(i, z, tableItem);
     }
   }
+  loadMemberPurchaseLog();
   return;
 }
 
@@ -118,6 +120,7 @@ void Dashboard::loadInventoryTableFromDatabase() {
   prepInventoryTable();
 
   QTableWidget *table = this->ui->InventoryListTable;
+  table->setRowCount(0);
   for (int i = 0; i < combined.count(); i++) {
     table->insertRow(table->rowCount());
     for (int k = 0; k < 4; k++) {
@@ -318,7 +321,6 @@ void Dashboard::on_button_createMember_clicked() {
     this->database->createMember(name, id, type, expDate);
     this->ui->MembershipInformationTable->setRowCount(0);
     loadMembersTableFromDatabase();
-    loadMemberPurchaseLog();
   }
 }
 

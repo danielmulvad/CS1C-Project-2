@@ -220,6 +220,52 @@
                <enum>QLayout::SetNoConstraint</enum>
               </property>
               <item>
+               <widget class="QComboBox" name="days">
+                <item>
+                 <property name="text">
+                  <string>Day 1</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Day 2</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Day 3</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Day 4</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Day 5</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Day 6</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Day 7</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_3">
+                <property name="text">
+                 <string>Generate Report</string>
+                </property>
+               </widget>
+              </item>
+              <item>
                <spacer name="horizontalSpacer_3">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
@@ -273,7 +319,7 @@
                 </column>
                 <column>
                  <property name="text">
-                  <string>Membership Number</string>
+                  <string>Member</string>
                  </property>
                 </column>
                 <column>
@@ -294,6 +340,27 @@
                </widget>
               </item>
              </layout>
+            </item>
+            <item>
+             <widget class="QLabel" name="dailyRevenue">
+              <property name="text">
+               <string>Total Revenue: </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="numReg">
+              <property name="text">
+               <string>Number of Regular Shoppers: </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="numExec">
+              <property name="text">
+               <string>Number of Executive Shoppers: </string>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
@@ -811,7 +878,7 @@
      <x>0</x>
      <y>0</y>
      <width>819</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCostco">
@@ -832,8 +899,8 @@
    <slot>membershipExpirationByMonth()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>728</x>
-     <y>221</y>
+     <x>732</x>
+     <y>185</y>
     </hint>
     <hint type="destinationlabel">
      <x>939</x>
@@ -848,8 +915,8 @@
    <slot>searchForMember()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>388</x>
-     <y>237</y>
+     <x>392</x>
+     <y>189</y>
     </hint>
     <hint type="destinationlabel">
      <x>800</x>
@@ -864,12 +931,28 @@
    <slot>searchForItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>338</x>
-     <y>237</y>
+     <x>342</x>
+     <y>190</y>
     </hint>
     <hint type="destinationlabel">
      <x>432</x>
      <y>573</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>Dashboard</receiver>
+   <slot>salesReportByDay()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>113</x>
+     <y>106</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>14</x>
+     <y>577</y>
     </hint>
    </hints>
   </connection>
@@ -878,5 +961,6 @@
   <slot>searchForItem()</slot>
   <slot>searchForMember()</slot>
   <slot>membershipExpirationByMonth()</slot>
+  <slot>salesReportByDay()</slot>
  </slots>
 </ui>

@@ -14,7 +14,7 @@ Dashboard::Dashboard(DbManager *db, QWidget *parent)
   this->database = db;
   ui->setupUi(this);
   this->loadMembersTableFromDatabase();
-  this->loadPurchasesTableFromDatabase();
+  this->salesReportByDay();
   this->loadInventoryTableFromDatabase();
   this->membershipExpirationByMonth();
   this->loadMemberConversions();
@@ -304,7 +304,7 @@ void Dashboard::on_button_importMembersFromFileSelection_clicked() {
 
 void Dashboard::on_button_importPurchasesFromFileSelection_clicked() {
   this->database->importPurchasesFromFileSelection(this);
-  loadPurchasesTableFromDatabase();
+  salesReportByDay();
   loadInventoryTableFromDatabase();
   loadMemberPurchaseLog();
   // loadMemberConversions();
@@ -331,4 +331,112 @@ void Dashboard::on_button_deleteMember_clicked() {
   if (database->deleteMember(memberId)) {
     table->removeRow(currentRowIndex);
   }
+}
+
+void Dashboard::salesReportByDay() {
+
+      int daytoReport = this->ui->days->currentIndex() + 1;
+      QString datetoReport = "4/" + QString::number(daytoReport) + "/2021";
+      QTableWidget *table = this->ui->SalesReportTable;
+      QList<QList<QString>> purchases = this->database->getPurchases();
+      double total = 0.0;
+      QList<QString>regularShoppers;
+      QList<QString>executiveShoppers;
+      int numOfReg = 0;
+      int numOfExec = 0;
+
+      table->setRowCount(0);
+      table->setColumnWidth(0, 90);
+
+      for(int i=0; i < purchases.count(); i++){
+
+          if(purchases.at(i).at(0) == datetoReport) {
+
+              table->insertRow(table->rowCount());
+              QTableWidgetItem *date = new QTableWidgetItem;
+              QTableWidgetItem *name = new QTableWidgetItem;
+              QTableWidgetItem *item = new QTableWidgetItem;
+              QTableWidgetItem *price = new QTableWidgetItem;
+              QTableWidgetItem *quantity = new QTableWidgetItem;
+
+              date->setText(purchases.at(i).at(0));
+              name->setText(memberNameFromIDNum(purchases.at(i).at(1)));
+              item->setText(purchases.at(i).at(2));
+              price->setText(purchases.at(i).at(3));
+              quantity->setText(purchases.at(i).at(4));
+
+              table->setItem(table->rowCount()-1, 0, date);
+              table->setItem(table->rowCount()-1, 1, name);
+              table->setItem(table->rowCount()-1, 2, item);
+              table->setItem(table->rowCount()-1, 3, price);
+              table->setItem(table->rowCount()-1, 4, quantity);
+
+              total += price->text().toDouble() * quantity->text().toInt();
+
+              bool found = false;
+
+              if(isRegularMember(purchases.at(i).at(1))) {
+                  for(int j=0; j < regularShoppers.count(); j++) {
+                      if(purchases.at(i).at(1) == regularShoppers.at(j)) {
+                          found = true;
+                      }
+                  }
+              }
+              else {
+                  for(int j=0; j < executiveShoppers.count(); j++) {
+                      if(purchases.at(i).at(1) == executiveShoppers.at(j))
+                          found = true;
+                  }
+              }
+
+              if(!found && isRegularMember(purchases.at(i).at(1))) {
+                  regularShoppers.push_back(purchases.at(i).at(1));
+                  numOfReg++;
+              }
+              else if(!found && !isRegularMember(purchases.at(i).at(1))) {
+                  executiveShoppers.push_back(purchases.at(i).at(1));
+                  numOfExec++;
+              }
+          }
+      }
+
+      this->ui->dailyRevenue->setText("Total Daily Revenue: $" + QString::number(total*1.0775, 'f', 2));
+      this->ui->numReg->setText("Number of Unique Regular Shoppers: " + QString::number(numOfReg));
+      this->ui->numExec->setText("Number of Unique Executive Shoppers: " + QString::number(numOfExec));
+
+}
+
+bool Dashboard::isRegularMember(QString IDNum) {
+
+    QList<QList<QString>> members = this->database->getMembers();
+
+    for(int i=0; i < members.count(); i++) {
+        if(members.at(i).at(1) == IDNum) {
+            if(members.at(i).at(2) == "Regular") {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+
+    qDebug() << "can't find member";
+
+    return true;
+}
+
+QString Dashboard::memberNameFromIDNum(QString IDNum) {
+
+    QList<QList<QString>> members = this->database->getMembers();
+
+    for(int i=0; i < members.count(); i++) {
+        if(members.at(i).at(1) == IDNum) {
+            return members.at(i).at(0);
+        }
+    }
+
+    qDebug() << "can't find member";
+    return "";
+
 }

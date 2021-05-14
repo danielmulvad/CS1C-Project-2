@@ -6,6 +6,7 @@
 #include <QDate>
 #include <QMainWindow>
 #include <QString>
+#include <QDate>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -34,6 +35,8 @@ private slots:
 
   void on_button_deleteMember_clicked();
 
+  void salesReportByDay();
+
 private:
   Ui::Dashboard *ui;
   CreateMemberDialog *createMemberDialog;
@@ -49,5 +52,8 @@ private:
   void loadMemberPurchaseLog();
 
   void loadMemberConversions();
+
+  bool isRegularMember(QString IDNum);
+  QString memberNameFromIDNum(QString IDNum);
 };
 #endif // DASHBOARD_H

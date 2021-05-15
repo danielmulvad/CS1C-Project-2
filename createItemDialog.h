@@ -4,11 +4,10 @@
 #include <QDialog>
 
 namespace Ui {
-  class CreateItemDialog;
+class CreateItemDialog;
 }
 
-class CreateItemDialog : public QDialog
-{
+class CreateItemDialog : public QDialog {
   Q_OBJECT
 
 public:
@@ -17,6 +16,7 @@ public:
 
   QString getName() const;
   double getPrice() const;
+
 private:
   Ui::CreateItemDialog *ui;
 };

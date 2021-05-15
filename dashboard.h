@@ -1,8 +1,8 @@
 #ifndef DASHBOARD_H
 #define DASHBOARD_H
 
-#include "createMemberDialog.h"
 #include "createItemDialog.h"
+#include "createMemberDialog.h"
 #include "database.h"
 #include <QDate>
 #include <QMainWindow>

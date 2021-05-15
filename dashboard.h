@@ -39,6 +39,8 @@ private slots:
 
   void on_button_createItem_clicked();
 
+  void on_button_deleteItem_clicked();
+
 private:
   Ui::Dashboard *ui;
   CreateItemDialog *createItemDialog;

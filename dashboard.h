@@ -2,6 +2,7 @@
 #define DASHBOARD_H
 
 #include "createMemberDialog.h"
+#include "createItemDialog.h"
 #include "database.h"
 #include <QDate>
 #include <QMainWindow>
@@ -36,8 +37,11 @@ private slots:
 
   void salesReportByDay();
 
+  void on_button_createItem_clicked();
+
 private:
   Ui::Dashboard *ui;
+  CreateItemDialog *createItemDialog;
   CreateMemberDialog *createMemberDialog;
   DbManager *database;
 

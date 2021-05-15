@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    createItemDialog.cpp \
     createMemberDialog.cpp \
     dashboard.cpp \
     database.cpp \
@@ -16,12 +17,14 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    createItemDialog.h \
     createMemberDialog.h \
     dashboard.h \
     database.h \
     mainwindow.h
 
 FORMS += \
+    createItemDialog.ui \
     createMemberDialog.ui \
     dashboard.ui \
     mainwindow.ui

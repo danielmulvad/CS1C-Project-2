@@ -15,6 +15,8 @@ public:
   void listTables();
   QList<QList<QString>> getMembers();
   QList<QList<QString>> getPurchases();
+  bool createPurchase(const QDate &date, const int &customerId, const QString &name, const double &productPrice, const int &productQuantity);
+  bool deletePurchase();
   void importMembersFromFileSelection(QWidget *widget);
   void importPurchasesFromFileSelection(QWidget *widget);
   bool createMember(const QString &name, const int &id, const QString &type,

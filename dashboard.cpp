@@ -24,6 +24,7 @@ Dashboard::~Dashboard() {
   delete ui;
   delete database;
   delete createMemberDialog;
+  delete createItemDialog;
 }
 
 void Dashboard::loadPurchasesTableFromDatabase() {
@@ -334,7 +335,6 @@ void Dashboard::on_button_deleteMember_clicked() {
 }
 
 void Dashboard::salesReportByDay() {
-
   int daytoReport = this->ui->days->currentIndex() + 1;
   QString datetoReport = "4/" + QString::number(daytoReport) + "/2021";
   QTableWidget *table = this->ui->SalesReportTable;
@@ -407,9 +407,7 @@ void Dashboard::salesReportByDay() {
 }
 
 bool Dashboard::isRegularMember(QString IDNum) {
-
   QList<QList<QString>> members = this->database->getMembers();
-
   for (int i = 0; i < members.count(); i++) {
     if (members.at(i).at(1) == IDNum) {
       if (members.at(i).at(2) == "Regular") {
@@ -419,22 +417,45 @@ bool Dashboard::isRegularMember(QString IDNum) {
       }
     }
   }
-
   qDebug() << "can't find member";
-
   return true;
 }
 
 QString Dashboard::memberNameFromIDNum(QString IDNum) {
-
   QList<QList<QString>> members = this->database->getMembers();
-
   for (int i = 0; i < members.count(); i++) {
     if (members.at(i).at(1) == IDNum) {
       return members.at(i).at(0);
     }
   }
-
   qDebug() << "can't find member";
   return "";
+}
+
+void Dashboard::on_button_createItem_clicked()
+{
+  this->createItemDialog = new CreateItemDialog();
+  this->createItemDialog->show();
+  if (this->createItemDialog->exec() == QDialog::Accepted) {
+    QString name = this->createItemDialog->getName();
+    double price = this->createItemDialog->getPrice();
+    if (database->createPurchase(QDate::currentDate(), 0, name, price, 0)) {
+        this->loadInventoryTableFromDatabase();
+    }
+  }
+}
+
+void Dashboard::on_button_deleteItem_clicked()
+{
+//  Will complete tomorrow - committing with comments for progress update
+//  QTableWidget *table = this->ui->InventoryListTable;
+//  const int currentRowIndex = table->currentRow();
+//  const QDate purchaseDate = QDate::fromString(table->item(currentRowIndex, 1)->text(), "MM/dd/yyyy");
+//  const int customerId = table->item(currentRowIndex, 2)->text().toInt();
+//  const QString productDescription = table->item(currentRowIndex, 3)->text();
+//  const double productPrice = table->item(currentRowIndex, 4)->text().toDouble();
+//  const int productQuantity = table->item(currentRowIndex, 5)->text().toDouble();
+//  if (database->deletePurchase()) {
+//    table->removeRow(currentRowIndex);
+//  }
 }

@@ -1,5 +1,5 @@
-#include "ui_dashboard.h"
 #include "dashboard.h"
+#include "ui_dashboard.h"
 
 #include <QDate>
 
@@ -392,7 +392,8 @@ void Dashboard::salesReportByDay() {
         }
       } else {
         for (int j = 0; j < executiveShoppers.count(); j++) {
-          if (purchases.at(i).at(1) == executiveShoppers.at(j)) found = true;
+          if (purchases.at(i).at(1) == executiveShoppers.at(j))
+            found = true;
         }
       }
 

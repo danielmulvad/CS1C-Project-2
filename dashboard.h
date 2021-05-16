@@ -1,12 +1,12 @@
 #ifndef DASHBOARD_H
 #define DASHBOARD_H
 
+#include "createItemDialog.h"
 #include "createMemberDialog.h"
 #include "database.h"
 #include <QDate>
 #include <QMainWindow>
 #include <QString>
-#include <QDate>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -37,8 +37,13 @@ private slots:
 
   void salesReportByDay();
 
+  void on_button_createItem_clicked();
+
+  void on_button_deleteItem_clicked();
+
 private:
   Ui::Dashboard *ui;
+  CreateItemDialog *createItemDialog;
   CreateMemberDialog *createMemberDialog;
   DbManager *database;
 

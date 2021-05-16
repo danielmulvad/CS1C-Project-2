@@ -205,3 +205,25 @@ QList<QList<QString>> DbManager::getPurchases() {
   }
   return ret;
 }
+
+bool DbManager::createPurchase(const QDate &date, const int &customerId,
+                               const QString &name, const double &productPrice,
+                               const int &productQuantity) {
+  QSqlQuery createPurchase;
+  createPurchase.prepare(
+      "INSERT INTO purchases (purchaseDate, customerId, productDescription, "
+      "productPrice, productQuantity) VALUES "
+      "(:purchaseDate, :customerId, :productDescription, :productPrice, "
+      ":productQuantity)");
+  createPurchase.bindValue(":purchaseDate", date.toString("MM/dd/yyyy"));
+  createPurchase.bindValue(":customerId", customerId);
+  createPurchase.bindValue(":productDescription", name);
+  createPurchase.bindValue(":productPrice", productPrice);
+  createPurchase.bindValue(":productQuantity", productQuantity);
+  return createPurchase.exec();
+}
+
+bool DbManager::deletePurchase() {
+  // not implemented
+  return false;
+}

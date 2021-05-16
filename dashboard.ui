@@ -256,6 +256,11 @@
                   <string>Day 7</string>
                  </property>
                 </item>
+                <item>
+                 <property name="text">
+                  <string>All Days</string>
+                 </property>
+                </item>
                </widget>
               </item>
               <item>

@@ -1,15 +1,14 @@
 #ifndef CREATEPURCHASEDIALOG_H
 #define CREATEPURCHASEDIALOG_H
 
-#include <QDialog>
 #include "database.h"
+#include <QDialog>
 
 namespace Ui {
-  class CreatePurchaseDialog;
+class CreatePurchaseDialog;
 }
 
-class CreatePurchaseDialog : public QDialog
-{
+class CreatePurchaseDialog : public QDialog {
   Q_OBJECT
 
 public:

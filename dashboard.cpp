@@ -491,24 +491,27 @@ void Dashboard::on_button_deleteItem_clicked() {
   }
 }
 
-void Dashboard::on_button_createPurchase_clicked()
-{
+void Dashboard::on_button_createPurchase_clicked() {
   this->createPurchaseDialog = new CreatePurchaseDialog(database, this);
   this->createPurchaseDialog->show();
   if (this->createPurchaseDialog->exec() == QDialog::Accepted) {
-      const QString inputMember = createPurchaseDialog->getName();
-      const QString inputProductDescription = createPurchaseDialog->getProductDescription();
-      const double inputPrice = createPurchaseDialog->getPrice();
-      const int inputQuantity = createPurchaseDialog->getQuantity();
-      const QList<QList<QString>> members = database->getMembers();
-      for (int i = 0; i < members.length(); i++) {
-          if (members.at(i).at(0) == inputMember) { // if member found...
-            if (database->createPurchase(QDate::currentDate(), members.at(i).at(1).toInt(), inputProductDescription, inputPrice, inputQuantity)) { // if database create purchase OK...
-                reloadAllDatatables(); // reload all tables
-              }
-            }
+    const QString inputMember = createPurchaseDialog->getName();
+    const QString inputProductDescription =
+        createPurchaseDialog->getProductDescription();
+    const double inputPrice = createPurchaseDialog->getPrice();
+    const int inputQuantity = createPurchaseDialog->getQuantity();
+    const QList<QList<QString>> members = database->getMembers();
+    for (int i = 0; i < members.length(); i++) {
+      if (members.at(i).at(0) == inputMember) { // if member found...
+        if (database->createPurchase(
+                QDate::currentDate(), members.at(i).at(1).toInt(),
+                inputProductDescription, inputPrice,
+                inputQuantity)) { // if database create purchase OK...
+          reloadAllDatatables();  // reload all tables
         }
+      }
     }
+  }
 }
 
 void Dashboard::reloadAllDatatables() {

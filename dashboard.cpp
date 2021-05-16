@@ -329,12 +329,12 @@ void Dashboard::on_button_deleteMember_clicked() {
   QTableWidget *table = this->ui->MembershipInformationTable;
   const int currentRowIndex = table->currentRow();
   qDebug() << "Row index " << currentRowIndex;
-  if (currentRowIndex >= 0){
-      const int memberId = table->item(currentRowIndex, 1)->text().toInt();
-      if (database->deleteMember(memberId)) {
-          table->removeRow(currentRowIndex);
-        }
+  if (currentRowIndex >= 0) {
+    const int memberId = table->item(currentRowIndex, 1)->text().toInt();
+    if (database->deleteMember(memberId)) {
+      table->removeRow(currentRowIndex);
     }
+  }
 }
 
 void Dashboard::salesReportByDay() {
@@ -451,10 +451,10 @@ void Dashboard::on_button_deleteItem_clicked() {
   QTableWidget *table = this->ui->InventoryListTable;
   const int currentRowIndex = table->currentRow();
   const QString productDescription = table->item(currentRowIndex, 0)->text();
-  if (currentRowIndex >=0) {
-      if (database->deletePurchase(productDescription)) {
-          table->removeRow(currentRowIndex);
-          this->loadInventoryTableFromDatabase();
-        }
+  if (currentRowIndex >= 0) {
+    if (database->deletePurchase(productDescription)) {
+      table->removeRow(currentRowIndex);
+      this->loadInventoryTableFromDatabase();
     }
+  }
 }

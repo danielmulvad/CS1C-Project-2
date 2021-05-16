@@ -225,7 +225,8 @@ bool DbManager::createPurchase(const QDate &date, const int &customerId,
 
 bool DbManager::deletePurchase(const QString &productDescription) {
   QSqlQuery deletePurchase;
-  deletePurchase.prepare("DELETE FROM purchases WHERE productDescription=:productDescription");
+  deletePurchase.prepare(
+      "DELETE FROM purchases WHERE productDescription=:productDescription");
   deletePurchase.bindValue(":productDescription", productDescription);
   return deletePurchase.exec();
 }

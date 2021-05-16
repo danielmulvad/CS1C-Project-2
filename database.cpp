@@ -1,5 +1,4 @@
 #include "database.h"
-#include <iostream>
 
 QString cleanInputText(QString string) {
   string.remove(QRegularExpression("(\\t)"));

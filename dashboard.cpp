@@ -1,8 +1,7 @@
+#include "ui_dashboard.h"
 #include "dashboard.h"
 
-#include "ui_dashboard.h"
 #include <QDate>
-#include <iostream>
 
 Dashboard::Dashboard(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::Dashboard) {
@@ -340,22 +339,13 @@ void Dashboard::on_button_deleteMember_clicked() {
 void Dashboard::salesReportByDay() {
   int daytoReport = this->ui->days->currentIndex() + 1;
   QList<QList<QString>> purchases = this->database->getPurchases();
-  bool sortByMem = false;
-
   if (daytoReport == 8) {
-    std::cout << "Regular Shoppers selected" << std::endl;
     purchases = this->database->getPurchases();
-    sortByMem = true;
-
   } else if (daytoReport == 9) {
-    std::cout << "Executive Shoppers Selected" << std::endl;
     purchases = this->database->getPurchases();
-    sortByMem = true;
   }
-
   QString datetoReport = "4/" + QString::number(daytoReport) + "/2021";
   QTableWidget *table = this->ui->SalesReportTable;
-  // QList<QList<QString>> purchases = this->database->getPurchases(0);
   double total = 0.0;
   QVector<QString> regularShoppers;
   QVector<QString> executiveShoppers;
@@ -364,12 +354,10 @@ void Dashboard::salesReportByDay() {
 
   table->setRowCount(0);
   table->setColumnWidth(0, 90);
-  std::cout << purchases.count() << std::endl;
+  qDebug() << purchases.count();
 
   for (int i = 0; i < purchases.count(); i++) {
-
     if (purchases.at(i).at(0) == datetoReport) {
-
       table->insertRow(table->rowCount());
       QTableWidgetItem *date = new QTableWidgetItem;
       QTableWidgetItem *name = new QTableWidgetItem;
@@ -404,8 +392,7 @@ void Dashboard::salesReportByDay() {
         }
       } else {
         for (int j = 0; j < executiveShoppers.count(); j++) {
-          if (purchases.at(i).at(1) == executiveShoppers.at(j))
-            found = true;
+          if (purchases.at(i).at(1) == executiveShoppers.at(j)) found = true;
         }
       }
 

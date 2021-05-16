@@ -18,7 +18,7 @@ public:
   bool createPurchase(const QDate &date, const int &customerId,
                       const QString &name, const double &productPrice,
                       const int &productQuantity);
-  bool deletePurchase();
+  bool deletePurchase(const QString &productDescription);
   void importMembersFromFileSelection(QWidget *widget);
   void importPurchasesFromFileSelection(QWidget *widget);
   bool createMember(const QString &name, const int &id, const QString &type,

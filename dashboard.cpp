@@ -1,8 +1,7 @@
 #include "dashboard.h"
+#include "ui_dashboard.h"
 
 #include <QDate>
-
-#include "ui_dashboard.h"
 
 Dashboard::Dashboard(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::Dashboard) {
@@ -328,48 +327,58 @@ void Dashboard::on_button_createMember_clicked() {
 void Dashboard::on_button_deleteMember_clicked() {
   QTableWidget *table = this->ui->MembershipInformationTable;
   const int currentRowIndex = table->currentRow();
-  const int memberId = table->item(currentRowIndex, 1)->text().toInt();
-  if (database->deleteMember(memberId)) {
-    table->removeRow(currentRowIndex);
+  qDebug() << "Row index " << currentRowIndex;
+  if (currentRowIndex >= 0) {
+    const int memberId = table->item(currentRowIndex, 1)->text().toInt();
+    if (database->deleteMember(memberId)) {
+      table->removeRow(currentRowIndex);
+    }
   }
 }
 
 void Dashboard::salesReportByDay() {
   int daytoReport = this->ui->days->currentIndex() + 1;
+  QList<QList<QString>> purchases = this->database->getPurchases();
+  if (daytoReport == 8) {
+    purchases = this->database->getPurchases();
+  } else if (daytoReport == 9) {
+    purchases = this->database->getPurchases();
+  }
   QString datetoReport = "4/" + QString::number(daytoReport) + "/2021";
   QTableWidget *table = this->ui->SalesReportTable;
-  QList<QList<QString>> purchases = this->database->getPurchases();
   double total = 0.0;
-  QList<QString> regularShoppers;
-  QList<QString> executiveShoppers;
+  QVector<QString> regularShoppers;
+  QVector<QString> executiveShoppers;
   int numOfReg = 0;
   int numOfExec = 0;
 
   table->setRowCount(0);
   table->setColumnWidth(0, 90);
+  qDebug() << purchases.count();
 
   for (int i = 0; i < purchases.count(); i++) {
-
     if (purchases.at(i).at(0) == datetoReport) {
-
       table->insertRow(table->rowCount());
       QTableWidgetItem *date = new QTableWidgetItem;
       QTableWidgetItem *name = new QTableWidgetItem;
       QTableWidgetItem *item = new QTableWidgetItem;
       QTableWidgetItem *price = new QTableWidgetItem;
       QTableWidgetItem *quantity = new QTableWidgetItem;
+      QTableWidgetItem *type = new QTableWidgetItem;
 
       date->setText(purchases.at(i).at(0));
       name->setText(memberNameFromIDNum(purchases.at(i).at(1)));
       item->setText(purchases.at(i).at(2));
       price->setText(purchases.at(i).at(3));
       quantity->setText(purchases.at(i).at(4));
+      type->setText(purchases.at(i).at(5));
 
       table->setItem(table->rowCount() - 1, 0, date);
       table->setItem(table->rowCount() - 1, 1, name);
       table->setItem(table->rowCount() - 1, 2, item);
       table->setItem(table->rowCount() - 1, 3, price);
       table->setItem(table->rowCount() - 1, 4, quantity);
+      table->setItem(table->rowCount() - 1, 5, type);
 
       total += price->text().toDouble() * quantity->text().toInt();
 
@@ -445,16 +454,13 @@ void Dashboard::on_button_createItem_clicked() {
 }
 
 void Dashboard::on_button_deleteItem_clicked() {
-  //  Will complete tomorrow - committing with comments for progress update
-  //  QTableWidget *table = this->ui->InventoryListTable;
-  //  const int currentRowIndex = table->currentRow();
-  //  const QDate purchaseDate = QDate::fromString(table->item(currentRowIndex,
-  //  1)->text(), "MM/dd/yyyy"); const int customerId =
-  //  table->item(currentRowIndex, 2)->text().toInt(); const QString
-  //  productDescription = table->item(currentRowIndex, 3)->text(); const double
-  //  productPrice = table->item(currentRowIndex, 4)->text().toDouble(); const
-  //  int productQuantity = table->item(currentRowIndex, 5)->text().toDouble();
-  //  if (database->deletePurchase()) {
-  //    table->removeRow(currentRowIndex);
-  //  }
+  QTableWidget *table = this->ui->InventoryListTable;
+  const int currentRowIndex = table->currentRow();
+  const QString productDescription = table->item(currentRowIndex, 0)->text();
+  if (currentRowIndex >= 0) {
+    if (database->deletePurchase(productDescription)) {
+      table->removeRow(currentRowIndex);
+      this->loadInventoryTableFromDatabase();
+    }
+  }
 }

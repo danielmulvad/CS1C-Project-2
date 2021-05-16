@@ -445,16 +445,11 @@ void Dashboard::on_button_createItem_clicked() {
 }
 
 void Dashboard::on_button_deleteItem_clicked() {
-  //  Will complete tomorrow - committing with comments for progress update
-  //  QTableWidget *table = this->ui->InventoryListTable;
-  //  const int currentRowIndex = table->currentRow();
-  //  const QDate purchaseDate = QDate::fromString(table->item(currentRowIndex,
-  //  1)->text(), "MM/dd/yyyy"); const int customerId =
-  //  table->item(currentRowIndex, 2)->text().toInt(); const QString
-  //  productDescription = table->item(currentRowIndex, 3)->text(); const double
-  //  productPrice = table->item(currentRowIndex, 4)->text().toDouble(); const
-  //  int productQuantity = table->item(currentRowIndex, 5)->text().toDouble();
-  //  if (database->deletePurchase()) {
-  //    table->removeRow(currentRowIndex);
-  //  }
+  QTableWidget *table = this->ui->InventoryListTable;
+  const int currentRowIndex = table->currentRow();
+  const QString productDescription = table->item(currentRowIndex, 0)->text();
+  if (database->deletePurchase(productDescription)) {
+      table->removeRow(currentRowIndex);
+      this->loadInventoryTableFromDatabase();
+    }
 }

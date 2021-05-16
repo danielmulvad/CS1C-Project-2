@@ -35,7 +35,7 @@ DbManager::DbManager(const QString &path) {
         "CREATE TABLE IF NOT EXISTS purchases (purchaseDate DATE NOT NULL, "
         "customerId INT REFERENCES members (number) ON DELETE NO ACTION ON "
         "UPDATE NO ACTION, productDescription "
-        "STRING, productPrice DOUBLE, "
+        "STRING PRIMARY KEY, productPrice DOUBLE, "
         "productQuantity INT)");
     QSqlDatabase::database().commit();
   } else {
@@ -223,7 +223,9 @@ bool DbManager::createPurchase(const QDate &date, const int &customerId,
   return createPurchase.exec();
 }
 
-bool DbManager::deletePurchase() {
-  // not implemented
-  return false;
+bool DbManager::deletePurchase(const QString &productDescription) {
+  QSqlQuery deletePurchase;
+  deletePurchase.prepare("DELETE FROM purchases WHERE productDescription=:productDescription");
+  deletePurchase.bindValue(":productDescription", productDescription);
+  return deletePurchase.exec();
 }

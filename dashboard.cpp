@@ -151,12 +151,12 @@ void Dashboard::loadMemberPurchaseLog() {
         total +=
             inventory.at(j).at(3).toDouble() * inventory.at(j).at(4).toInt();
         grandTotal += inventory.at(j).at(3).toDouble() *
-                      inventory.at(j).at(4).toInt() * 1.775;
+                      inventory.at(j).at(4).toInt() * 1.0775;
       }
     }
 
     QTableWidgetItem *item = new QTableWidgetItem;
-    item->setText(QString::number(total * 1.775, 'f', 2));
+    item->setText(QString::number(total * 1.0775, 'f', 2));
     table->setItem(i, 4, item);
 
     if (table->item(i, 2)->text() == "Executive") {

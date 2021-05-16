@@ -340,8 +340,8 @@ void Dashboard::salesReportByDay() {
   QTableWidget *table = this->ui->SalesReportTable;
   QList<QList<QString>> purchases = this->database->getPurchases();
   double total = 0.0;
-  QList<QString> regularShoppers;
-  QList<QString> executiveShoppers;
+  QVector<QString> regularShoppers;
+  QVector<QString> executiveShoppers;
   int numOfReg = 0;
   int numOfExec = 0;
 

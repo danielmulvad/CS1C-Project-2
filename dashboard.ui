@@ -75,7 +75,7 @@
        <item>
         <widget class="QTabWidget" name="tabWidget">
          <property name="currentIndex">
-          <number>2</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="tab_membershipInformation">
           <property name="font">
@@ -335,6 +335,11 @@
                 <column>
                  <property name="text">
                   <string>Quantity Purchased</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Type</string>
                  </property>
                 </column>
                </widget>
@@ -912,7 +917,7 @@
      <x>0</x>
      <y>0</y>
      <width>819</width>
-     <height>24</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCostco">

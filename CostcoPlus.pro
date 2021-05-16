@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     createItemDialog.cpp \
     createMemberDialog.cpp \
+    createPurchaseDialog.cpp \
     dashboard.cpp \
     database.cpp \
     main.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 HEADERS += \
     createItemDialog.h \
     createMemberDialog.h \
+    createPurchaseDialog.h \
     dashboard.h \
     database.h \
     mainwindow.h
@@ -26,6 +28,7 @@ HEADERS += \
 FORMS += \
     createItemDialog.ui \
     createMemberDialog.ui \
+    createPurchaseDialog.ui \
     dashboard.ui \
     mainwindow.ui
 

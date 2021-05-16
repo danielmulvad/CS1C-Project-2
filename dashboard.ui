@@ -75,7 +75,7 @@
        <item>
         <widget class="QTabWidget" name="tabWidget">
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="tab_membershipInformation">
           <property name="font">
@@ -282,6 +282,13 @@
                <widget class="QPushButton" name="button_importPurchasesFromFileSelection">
                 <property name="text">
                  <string>Import Purchases</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="button_createPurchase">
+                <property name="text">
+                 <string>Create Purchases</string>
                 </property>
                </widget>
               </item>
@@ -917,7 +924,7 @@
      <x>0</x>
      <y>0</y>
      <width>819</width>
-     <height>21</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCostco">

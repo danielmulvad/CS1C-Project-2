@@ -14,6 +14,8 @@ public:
   ~DbManager();
   void listTables();
   QList<QList<QString>> getMembers();
+  QStringList getMemberNames() const;
+  QStringList getProductDescriptions() const;
   QList<QList<QString>> getPurchases();
   bool createPurchase(const QDate &date, const int &customerId,
                       const QString &name, const double &productPrice,

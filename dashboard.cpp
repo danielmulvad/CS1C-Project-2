@@ -13,11 +13,7 @@ Dashboard::Dashboard(DbManager *db, QWidget *parent)
     : QMainWindow(parent), ui(new Ui::Dashboard) {
   this->database = db;
   ui->setupUi(this);
-  this->loadMembersTableFromDatabase();
-  this->salesReportByDay();
-  this->loadInventoryTableFromDatabase();
-  this->membershipExpirationByMonth();
-  this->loadMemberConversions();
+  reloadAllDatatables();
 }
 
 Dashboard::~Dashboard() {
@@ -25,6 +21,7 @@ Dashboard::~Dashboard() {
   delete database;
   delete createMemberDialog;
   delete createItemDialog;
+  delete createPurchaseDialog;
 }
 
 void Dashboard::loadPurchasesTableFromDatabase() {
@@ -492,4 +489,32 @@ void Dashboard::on_button_deleteItem_clicked() {
       this->loadInventoryTableFromDatabase();
     }
   }
+}
+
+void Dashboard::on_button_createPurchase_clicked()
+{
+  this->createPurchaseDialog = new CreatePurchaseDialog(database, this);
+  this->createPurchaseDialog->show();
+  if (this->createPurchaseDialog->exec() == QDialog::Accepted) {
+      const QString inputMember = createPurchaseDialog->getName();
+      const QString inputProductDescription = createPurchaseDialog->getProductDescription();
+      const double inputPrice = createPurchaseDialog->getPrice();
+      const int inputQuantity = createPurchaseDialog->getQuantity();
+      const QList<QList<QString>> members = database->getMembers();
+      for (int i = 0; i < members.length(); i++) {
+          if (members.at(i).at(0) == inputMember) { // if member found...
+            if (database->createPurchase(QDate::currentDate(), members.at(i).at(1).toInt(), inputProductDescription, inputPrice, inputQuantity)) { // if database create purchase OK...
+                reloadAllDatatables(); // reload all tables
+              }
+            }
+        }
+    }
+}
+
+void Dashboard::reloadAllDatatables() {
+  loadMembersTableFromDatabase();
+  salesReportByDay();
+  loadInventoryTableFromDatabase();
+  membershipExpirationByMonth();
+  loadMemberConversions();
 }

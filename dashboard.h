@@ -3,6 +3,7 @@
 
 #include "createItemDialog.h"
 #include "createMemberDialog.h"
+#include "createPurchaseDialog.h"
 #include "database.h"
 #include <QDate>
 #include <QMainWindow>
@@ -41,10 +42,13 @@ private slots:
 
   void on_button_deleteItem_clicked();
 
+  void on_button_createPurchase_clicked();
+
 private:
   Ui::Dashboard *ui;
   CreateItemDialog *createItemDialog;
   CreateMemberDialog *createMemberDialog;
+  CreatePurchaseDialog *createPurchaseDialog;
   DbManager *database;
 
   void loadPurchasesTableFromDatabase();
@@ -60,5 +64,7 @@ private:
 
   bool isRegularMember(QString IDNum);
   QString memberNameFromIDNum(QString IDNum);
+
+  void reloadAllDatatables();
 };
 #endif // DASHBOARD_H

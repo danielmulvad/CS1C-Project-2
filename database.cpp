@@ -35,7 +35,7 @@ DbManager::DbManager(const QString &path) {
         "CREATE TABLE IF NOT EXISTS purchases (purchaseDate DATE NOT NULL, "
         "customerId INT REFERENCES members (number) ON DELETE NO ACTION ON "
         "UPDATE NO ACTION, productDescription "
-        "STRING PRIMARY KEY, productPrice DOUBLE, "
+        "STRING, productPrice DOUBLE, "
         "productQuantity INT)");
     QSqlDatabase::database().commit();
   } else {
@@ -165,6 +165,17 @@ QList<QList<QString>> DbManager::getMembers() {
   return ret;
 }
 
+QStringList DbManager::getMemberNames() const {
+  QStringList ret;
+  QSqlQuery getMemberNamesQuery;
+  if (getMemberNamesQuery.exec("SELECT DISTINCT name FROM members")) {
+      while(getMemberNamesQuery.next()) {
+          ret.push_back(getMemberNamesQuery.value(0).toString());
+        }
+    }
+  return ret;
+}
+
 bool DbManager::createMember(const QString &customerName,
                              const int &customerMemberNumber,
                              const QString &customerMembershipType,
@@ -190,25 +201,37 @@ bool DbManager::deleteMember(const int &id) {
   return deleteMember.exec();
 }
 
+QStringList DbManager::getProductDescriptions() const {
+  QStringList ret;
+  QSqlQuery getProductDescriptionsQuery;
+  if (getProductDescriptionsQuery.exec("SELECT DISTINCT productDescription FROM purchases")) {
+      while (getProductDescriptionsQuery.next()) {
+          ret.push_back(getProductDescriptionsQuery.value(0).toString());
+        }
+    }
+  return ret;
+}
+
 QList<QList<QString>> DbManager::getPurchases() {
   QList<QList<QString>> ret;
   QSqlQuery getPurchasesQuery;
 
-  getPurchasesQuery.exec(
+  if (getPurchasesQuery.exec(
       "SELECT purchaseDate, customerId, productDescription, productPrice, "
-      "productQuantity, type  FROM purchases, members WHERE "
-      "purchases.customerID = members.number ");
-
-  while (getPurchasesQuery.next()) {
-    QList<QString> temp;
-    temp.push_back(getPurchasesQuery.value(0).toString());
-    temp.push_back(getPurchasesQuery.value(1).toString());
-    temp.push_back(getPurchasesQuery.value(2).toString());
-    temp.push_back(getPurchasesQuery.value(3).toString());
-    temp.push_back(getPurchasesQuery.value(4).toString());
-    temp.push_back(getPurchasesQuery.value(5).toString());
-    ret.push_back(temp);
-  }
+      "productQuantity, type FROM purchases, members WHERE "
+      "purchases.customerID = members.number "))
+    {
+      while (getPurchasesQuery.next()) {
+          QList<QString> temp;
+          temp.push_back(getPurchasesQuery.value(0).toString());
+          temp.push_back(getPurchasesQuery.value(1).toString());
+          temp.push_back(getPurchasesQuery.value(2).toString());
+          temp.push_back(getPurchasesQuery.value(3).toString());
+          temp.push_back(getPurchasesQuery.value(4).toString());
+          temp.push_back(getPurchasesQuery.value(5).toString());
+          ret.push_back(temp);
+        }
+    }
   return ret;
 }
 

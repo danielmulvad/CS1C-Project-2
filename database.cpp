@@ -195,8 +195,10 @@ QList<QList<QString>> DbManager::getPurchases() {
   QList<QList<QString>> ret;
   QSqlQuery getPurchasesQuery;
 
-
-  getPurchasesQuery.exec("SELECT purchaseDate, customerId, productDescription, productPrice, productQuantity, type  FROM purchases, members WHERE purchases.customerID = members.number ");
+  getPurchasesQuery.exec(
+      "SELECT purchaseDate, customerId, productDescription, productPrice, "
+      "productQuantity, type  FROM purchases, members WHERE "
+      "purchases.customerID = members.number ");
 
   while (getPurchasesQuery.next()) {
     QList<QString> temp;

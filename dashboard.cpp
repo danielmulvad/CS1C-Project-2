@@ -36,20 +36,19 @@ void Dashboard::loadPurchasesTableFromDatabase() {
     table->insertRow(i);
     for (int z = 0; z < purchasesColumnsToRead; z++) {
       QTableWidgetItem *tableItem = new QTableWidgetItem;
-      if(z == 1)
-          tableItem->setText(memberNameFromIDNum(purchases.at(i).at(z)));
+      if (z == 1)
+        tableItem->setText(memberNameFromIDNum(purchases.at(i).at(z)));
       else
-          tableItem->setText(purchases.at(i).at(z));
+        tableItem->setText(purchases.at(i).at(z));
       table->setItem(i, z, tableItem);
     }
 
     QTableWidgetItem *type = new QTableWidgetItem;
 
-    if(isRegularMember(purchases.at(i).at(1))) {
-        type->setText("Regular");
-    }
-    else {
-        type->setText("Executive");
+    if (isRegularMember(purchases.at(i).at(1))) {
+      type->setText("Regular");
+    } else {
+      type->setText("Executive");
     }
 
     table->setItem(i, 5, type);
@@ -373,12 +372,12 @@ void Dashboard::salesReportByDay() {
   table->setColumnWidth(4, 140);
   table->setColumnWidth(5, 90);
 
-  if(daytoReport == 8) {
-      loadPurchasesTableFromDatabase();
-      this->ui->dailyRevenue->setText("");
-      this->ui->numReg->setText("");
-      this->ui->numExec->setText("");
-      return;
+  if (daytoReport == 8) {
+    loadPurchasesTableFromDatabase();
+    this->ui->dailyRevenue->setText("");
+    this->ui->numReg->setText("");
+    this->ui->numExec->setText("");
+    return;
   }
 
   for (int i = 0; i < purchases.count(); i++) {

@@ -1,7 +1,7 @@
 #include "dashboard.h"
 
 #include <QDate>
-
+#include <iostream>
 #include "ui_dashboard.h"
 
 Dashboard::Dashboard(QWidget *parent)
@@ -339,9 +339,25 @@ void Dashboard::on_button_deleteMember_clicked() {
 
 void Dashboard::salesReportByDay() {
   int daytoReport = this->ui->days->currentIndex() + 1;
+  QList<QList<QString>> purchases = this->database->getPurchases();
+  bool sortByMem = false;
+
+
+  if (daytoReport == 8) {
+      std::cout << "Regular Shoppers selected" << std::endl;
+      purchases = this->database->getPurchases();
+      sortByMem = true;
+
+  } else if (daytoReport == 9) {
+      std::cout << "Executive Shoppers Selected" << std::endl;
+      purchases = this->database->getPurchases();
+      sortByMem = true;
+  }
+
+
   QString datetoReport = "4/" + QString::number(daytoReport) + "/2021";
   QTableWidget *table = this->ui->SalesReportTable;
-  QList<QList<QString>> purchases = this->database->getPurchases();
+ // QList<QList<QString>> purchases = this->database->getPurchases(0);
   double total = 0.0;
   QVector<QString> regularShoppers;
   QVector<QString> executiveShoppers;
@@ -350,10 +366,11 @@ void Dashboard::salesReportByDay() {
 
   table->setRowCount(0);
   table->setColumnWidth(0, 90);
+  std::cout << purchases.count() << std::endl;
 
   for (int i = 0; i < purchases.count(); i++) {
 
-    if (purchases.at(i).at(0) == datetoReport) {
+    if (purchases.at(i).at(0) == datetoReport ) {
 
       table->insertRow(table->rowCount());
       QTableWidgetItem *date = new QTableWidgetItem;
@@ -361,18 +378,21 @@ void Dashboard::salesReportByDay() {
       QTableWidgetItem *item = new QTableWidgetItem;
       QTableWidgetItem *price = new QTableWidgetItem;
       QTableWidgetItem *quantity = new QTableWidgetItem;
+      QTableWidgetItem *type = new QTableWidgetItem;
 
       date->setText(purchases.at(i).at(0));
       name->setText(memberNameFromIDNum(purchases.at(i).at(1)));
       item->setText(purchases.at(i).at(2));
       price->setText(purchases.at(i).at(3));
       quantity->setText(purchases.at(i).at(4));
+      type->setText(purchases.at(i).at(5));
 
       table->setItem(table->rowCount() - 1, 0, date);
       table->setItem(table->rowCount() - 1, 1, name);
       table->setItem(table->rowCount() - 1, 2, item);
       table->setItem(table->rowCount() - 1, 3, price);
       table->setItem(table->rowCount() - 1, 4, quantity);
+      table->setItem(table->rowCount() - 1, 5, type);
 
       total += price->text().toDouble() * quantity->text().toInt();
 

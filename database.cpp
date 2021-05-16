@@ -1,4 +1,5 @@
 #include "database.h"
+#include <iostream>
 
 QString cleanInputText(QString string) {
   string.remove(QRegularExpression("(\\t)"));
@@ -193,7 +194,10 @@ bool DbManager::deleteMember(const int &id) {
 QList<QList<QString>> DbManager::getPurchases() {
   QList<QList<QString>> ret;
   QSqlQuery getPurchasesQuery;
-  getPurchasesQuery.exec("SELECT * FROM purchases");
+
+
+  getPurchasesQuery.exec("SELECT purchaseDate, customerId, productDescription, productPrice, productQuantity, type  FROM purchases, members WHERE purchases.customerID = members.number ");
+
   while (getPurchasesQuery.next()) {
     QList<QString> temp;
     temp.push_back(getPurchasesQuery.value(0).toString());
@@ -201,6 +205,7 @@ QList<QList<QString>> DbManager::getPurchases() {
     temp.push_back(getPurchasesQuery.value(2).toString());
     temp.push_back(getPurchasesQuery.value(3).toString());
     temp.push_back(getPurchasesQuery.value(4).toString());
+    temp.push_back(getPurchasesQuery.value(5).toString());
     ret.push_back(temp);
   }
   return ret;

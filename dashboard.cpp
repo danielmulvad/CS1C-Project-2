@@ -295,7 +295,7 @@ void Dashboard::loadMemberConversions() {
 
 void Dashboard::on_button_importMembersFromFileSelection_clicked() {
   this->database->importMembersFromFileSelection(this);
-  loadMembersTableFromDatabase();
+  reloadAllDatatables();
 }
 
 void Dashboard::on_button_importPurchasesFromFileSelection_clicked() {

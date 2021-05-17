@@ -219,8 +219,7 @@ QList<QList<QString>> DbManager::getPurchases() {
 
   if (getPurchasesQuery.exec(
           "SELECT purchaseDate, customerId, productDescription, productPrice, "
-          "productQuantity, type FROM purchases, members WHERE "
-          "purchases.customerID = members.number ")) {
+          "productQuantity, type FROM purchases, members")) {
     while (getPurchasesQuery.next()) {
       QList<QString> temp;
       temp.push_back(getPurchasesQuery.value(0).toString());

@@ -155,7 +155,8 @@ void Dashboard::loadMemberPurchaseLog() {
   QList<QList<QString>> inventory = this->database->getPurchases();
   QTableWidget *table = this->ui->MembershipInformationTable;
   double grandTotal = 0.0;
-
+  this->ui->GrandTotal->setText("Grand Total: $" +
+                                QString::number(grandTotal, 'f', 2));
   for (int i = 0; i < table->rowCount(); i++) {
     QString memberNum = table->item(i, 1)->text();
     qDebug() << memberNum;
@@ -477,7 +478,7 @@ void Dashboard::on_button_createItem_clicked() {
     QString name = this->createItemDialog->getName();
     double price = this->createItemDialog->getPrice();
     if (database->createPurchase(QDate::currentDate(), 0, name, price, 0)) {
-      this->loadInventoryTableFromDatabase();
+      this->reloadAllDatatables();
     }
   }
 }

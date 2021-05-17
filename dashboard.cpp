@@ -44,16 +44,6 @@ void Dashboard::loadPurchasesTableFromDatabase() {
         tableItem->setText(purchases.at(i).at(z));
       table->setItem(i, z, tableItem);
     }
-
-    QTableWidgetItem *type = new QTableWidgetItem;
-
-    if (isRegularMember(purchases.at(i).at(1))) {
-      type->setText("Regular");
-    } else {
-      type->setText("Executive");
-    }
-
-    table->setItem(i, 5, type);
   }
   return;
 }
@@ -114,7 +104,6 @@ QList<QList<QString>> Dashboard::getInventory() {
       temp.push_back(QString::number(
           (inventory.at(i).at(3).toDouble() * inventory.at(i).at(4).toInt()),
           'f', 2));
-      qDebug() << inventory.at(i).at(3) << inventory.at(i).at(4);
       combined.push_back(temp);
     }
 
@@ -159,7 +148,6 @@ void Dashboard::loadMemberPurchaseLog() {
                                 QString::number(grandTotal, 'f', 2));
   for (int i = 0; i < table->rowCount(); i++) {
     QString memberNum = table->item(i, 1)->text();
-    qDebug() << memberNum;
     double total = 0.0;
 
     for (int j = 0; j < inventory.count(); j++) {
@@ -179,8 +167,6 @@ void Dashboard::loadMemberPurchaseLog() {
       QTableWidgetItem *rebate = new QTableWidgetItem;
       rebate->setText(QString::number(total * 0.02, 'f', 2));
       table->setItem(i, 5, rebate);
-
-      qDebug() << total << " " << rebate->text();
     }
   }
 
@@ -195,12 +181,10 @@ void Dashboard::searchForItem() {
   this->ui->errorMessage->setText("");
 
   QString searchItem = this->ui->item->text();
-  qDebug() << "Search Item: " + searchItem;
   QTableWidget *table = this->ui->InventoryListTable;
 
   for (int i = 0; i < table->rowCount(); i++) {
     if (searchItem == table->item(i, 0)->text()) {
-      qDebug() << "found item";
       this->ui->name->setText(searchItem);
       this->ui->quantity->setText("Quantity Sold: " +
                                   table->item(i, 2)->text());
@@ -219,13 +203,11 @@ void Dashboard::searchForMember() {
   this->ui->error->setText("");
 
   QString searchMember = this->ui->member->text();
-  qDebug() << "Search Member: " << searchMember;
   QTableWidget *table = this->ui->MembershipInformationTable;
 
   for (int i = 0; i < table->rowCount(); i++) {
     if (searchMember == table->item(i, 0)->text() ||
         searchMember == table->item(i, 1)->text()) {
-      qDebug() << "found item";
       this->ui->memberName->setText(table->item(i, 0)->text());
       this->ui->purchases->setText("Total Purchases: $" +
                                    table->item(i, 4)->text());
@@ -305,9 +287,6 @@ void Dashboard::loadMemberConversions() {
       }
     }
   }
-
-  qDebug() << "out of for loop";
-
   this->ui->regular->setText("Total Regular Conversions: " +
                              QString::number(reg->rowCount()));
   this->ui->executive->setText("Total Executive Conversions: " +
@@ -344,7 +323,6 @@ void Dashboard::on_button_createMember_clicked() {
 void Dashboard::on_button_deleteMember_clicked() {
   QTableWidget *table = this->ui->MembershipInformationTable;
   const int currentRowIndex = table->currentRow();
-  qDebug() << "Row index " << currentRowIndex;
   if (currentRowIndex >= 0) {
     const int memberId = table->item(currentRowIndex, 1)->text().toInt();
     if (database->deleteMember(memberId)) {
@@ -359,21 +337,14 @@ void Dashboard::salesReportByDay() {
 
   QString datetoReport = "4/" + QString::number(daytoReport) + "/2021";
   QTableWidget *table = this->ui->SalesReportTable;
-  // QList<QList<QString>> purchases = this->database->getPurchases(0);
   double total = 0.0;
   QVector<QString> regularShoppers;
   QVector<QString> executiveShoppers;
   int numOfReg = 0;
   int numOfExec = 0;
-
-  // disable sorting
-  this->ui->InventoryListTable->setSortingEnabled(false);
-
   table->setRowCount(0);
-  table->setColumnWidth(0, 90);
   table->setColumnWidth(3, 90);
   table->setColumnWidth(4, 140);
-  table->setColumnWidth(5, 90);
 
   if (daytoReport == 8) {
     loadPurchasesTableFromDatabase();
@@ -391,21 +362,18 @@ void Dashboard::salesReportByDay() {
       QTableWidgetItem *item = new QTableWidgetItem;
       QTableWidgetItem *price = new QTableWidgetItem;
       QTableWidgetItem *quantity = new QTableWidgetItem;
-      QTableWidgetItem *type = new QTableWidgetItem;
 
       date->setText(purchases.at(i).at(0));
       name->setText(memberNameFromIDNum(purchases.at(i).at(1)));
       item->setText(purchases.at(i).at(2));
       price->setText(purchases.at(i).at(3));
       quantity->setText(purchases.at(i).at(4));
-      type->setText(purchases.at(i).at(5));
 
       table->setItem(table->rowCount() - 1, 0, date);
       table->setItem(table->rowCount() - 1, 1, name);
       table->setItem(table->rowCount() - 1, 2, item);
       table->setItem(table->rowCount() - 1, 3, price);
       table->setItem(table->rowCount() - 1, 4, quantity);
-      table->setItem(table->rowCount() - 1, 5, type);
 
       total += price->text().toDouble() * quantity->text().toInt();
 
@@ -440,9 +408,6 @@ void Dashboard::salesReportByDay() {
                             QString::number(numOfReg));
   this->ui->numExec->setText("Number of Unique Executive Shoppers: " +
                              QString::number(numOfExec));
-
-  // enable sorting
-  this->ui->InventoryListTable->setSortingEnabled(true);
 }
 
 bool Dashboard::isRegularMember(QString IDNum) {

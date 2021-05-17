@@ -418,7 +418,8 @@ void Dashboard::salesReportByDay() {
         }
       } else {
         for (int j = 0; j < executiveShoppers.count(); j++) {
-          if (purchases.at(i).at(1) == executiveShoppers.at(j)) found = true;
+          if (purchases.at(i).at(1) == executiveShoppers.at(j))
+            found = true;
         }
       }
 
@@ -504,12 +505,12 @@ void Dashboard::on_button_createPurchase_clicked() {
     const int inputQuantity = createPurchaseDialog->getQuantity();
     const QList<QList<QString>> members = database->getMembers();
     for (int i = 0; i < members.length(); i++) {
-      if (members.at(i).at(0) == inputMember) {  // if member found...
+      if (members.at(i).at(0) == inputMember) { // if member found...
         if (database->createPurchase(
                 QDate::currentDate(), members.at(i).at(1).toInt(),
                 inputProductDescription, inputPrice,
-                inputQuantity)) {  // if database create purchase OK...
-          reloadAllDatatables();   // reload all tables
+                inputQuantity)) { // if database create purchase OK...
+          reloadAllDatatables();  // reload all tables
         }
       }
     }

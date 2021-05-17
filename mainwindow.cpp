@@ -4,6 +4,7 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
+  database = new DbManager{QString{QDir::currentPath() + "/costco+.db"}};
   ui->setupUi(this);
 }
 
@@ -13,7 +14,10 @@ MainWindow::MainWindow(DbManager *db, QWidget *parent)
   ui->setupUi(this);
 }
 
-MainWindow::~MainWindow() { delete ui; }
+MainWindow::~MainWindow() {
+  delete ui;
+  delete database;
+}
 
 void MainWindow::handle_login() {
   if (this->ui->username->text() == usernameKey &&

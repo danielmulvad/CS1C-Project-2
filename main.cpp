@@ -5,9 +5,8 @@
 #include "mainwindow.h"
 
 int main(int argc, char *argv[]) {
-  DbManager database{QString{QDir::currentPath() + "/costco+.db"}};
   QApplication a(argc, argv);
-  MainWindow w{&database};
+  MainWindow w;
   w.show();
   return a.exec();
 }
